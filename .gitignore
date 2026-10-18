@@ -1,0 +1,42 @@
+#
+# Generated with ChatGPT
+#
+
+# Maven build output
+target/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
+
+# IDE metadata
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.factorypath
+.metadata/
+.vscode/
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# Local configuration overrides
+application-local.properties
+application-local.yml
+application-local.yaml
+
+# Local WildFly runtime data (if created inside the project)
+/standalone/data/
+/standalone/log/
+/standalone/tmp/
