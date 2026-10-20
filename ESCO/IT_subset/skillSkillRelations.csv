@@ -13,11 +13,16 @@ http://data.europa.eu/esco/skill/07889c08-7220-47c8-96f7-6068fbea00dc,skill/comp
 http://data.europa.eu/esco/skill/07e47d58-dd0e-4302-9e68-70a188e89065,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/3a5231a0-8c30-48ee-b671-08e2debd4441
 http://data.europa.eu/esco/skill/07e51c60-763a-4335-b4ec-70a15f66d328,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ccdbd9bb-4faf-403c-a968-e8bf487f8a53
 http://data.europa.eu/esco/skill/0868eef3-2213-4572-9343-74931345a7d3,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c
+http://data.europa.eu/esco/skill/08fd2839-670c-4f16-8024-97437f2035ab,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/b0560439-14eb-41d1-aa53-1938efc24123
 http://data.europa.eu/esco/skill/0a30e5a8-60a8-4fda-9f89-8e9cee38da5a,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/99207709-d076-4cce-ba38-e90d3bb28806
 http://data.europa.eu/esco/skill/0af062de-eb43-41e9-9b96-249e2cd22d26,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/69bbd53f-fbb0-4476-b4b2-ef7844464e28
 http://data.europa.eu/esco/skill/0c766ca3-9364-4203-916b-fed16e4814c1,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/93f1caa3-df33-4de7-98da-40f5fc30fd52
 http://data.europa.eu/esco/skill/0dcbf7c5-bedf-4485-b16b-23df54443864,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/d6c29154-9cc1-48a4-a2de-3d1d0d7f0831
+http://data.europa.eu/esco/skill/0df2e216-68ae-4952-b9dc-3c2f2bc04fe3,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576
 http://data.europa.eu/esco/skill/0e0c9c11-b39e-43cf-ba95-2fe646f5de64,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ca73ac82-867a-4afa-9732-834aebe896ff
+http://data.europa.eu/esco/skill/0efbe2dc-2770-47ec-b8f4-d1bdff6ac0a4,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/0daaf096-1639-461c-bf1a-bbeea77e6b67
+http://data.europa.eu/esco/skill/0efbe2dc-2770-47ec-b8f4-d1bdff6ac0a4,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0
+http://data.europa.eu/esco/skill/114a5cda-0ef1-4065-a064-755260aaa77e,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/93f1caa3-df33-4de7-98da-40f5fc30fd52
 http://data.europa.eu/esco/skill/114c9698-c999-4369-8498-81bf641fe871,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/2ddb1226-1117-4eb4-ae65-3a2f5a5a3c80
 http://data.europa.eu/esco/skill/114c9698-c999-4369-8498-81bf641fe871,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/3ff589b7-68df-4ea5-ae41-b395bdb2378f
 http://data.europa.eu/esco/skill/11747665-0e98-4f27-bd0d-536862cd5746,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ed1fbdc3-1071-423c-9bb4-e3288ca6d1fe
@@ -62,9 +67,11 @@ http://data.europa.eu/esco/skill/2b92a5b2-6758-4ee3-9fb4-b6387a55cc8f,skill/comp
 http://data.europa.eu/esco/skill/2b92a5b2-6758-4ee3-9fb4-b6387a55cc8f,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ed39edd3-44d0-4a16-9796-bfb99f92baf3
 http://data.europa.eu/esco/skill/2c4e11ef-da18-4e19-816b-e6bc19e12424,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97
 http://data.europa.eu/esco/skill/2c4e11ef-da18-4e19-816b-e6bc19e12424,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/2bde42ae-e776-41c1-9ded-b07b30bfe985
+http://data.europa.eu/esco/skill/2c5cbddf-3393-452f-abb0-8e734d1b61be,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/60d48be0-4260-4b2e-85b9-aedff7a9b7d9
 http://data.europa.eu/esco/skill/2fb8480e-de3c-462b-b169-e8bbb344da68,knowledge,optional,knowledge,http://data.europa.eu/esco/skill/42cb7669-c371-4903-9c0b-13db67b2e4bb
 http://data.europa.eu/esco/skill/3140d979-2d6a-4c10-add9-f7091103829f,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/0e361e34-c563-4892-b9d3-873a6a4fef8a
 http://data.europa.eu/esco/skill/31c69100-b612-4a61-8db5-fd314318854c,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/4339176e-3acd-4f7f-a5d9-445bee3d23f2
+http://data.europa.eu/esco/skill/31d35d3d-2bf2-49aa-9c20-92566ef80277,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c
 http://data.europa.eu/esco/skill/3579208e-49b3-4ce4-98e7-20e41b1ce8d4,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/11eebd42-44ab-401d-8a2c-bdb9fc9beb50
 http://data.europa.eu/esco/skill/370ebe1f-55a5-424f-a44e-f3c19222d63b,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/3ff589b7-68df-4ea5-ae41-b395bdb2378f
 http://data.europa.eu/esco/skill/37a438f3-e28c-4e32-83c5-299f047c1dc9,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/d6c29154-9cc1-48a4-a2de-3d1d0d7f0831
@@ -90,6 +97,7 @@ http://data.europa.eu/esco/skill/446d29ed-9eaa-4798-bb91-5f196651ad0a,skill/comp
 http://data.europa.eu/esco/skill/45a16833-6666-488d-aadf-e02e569275e8,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/118a9b27-1c5a-4214-b685-1a4d9e6365ea
 http://data.europa.eu/esco/skill/45a16833-6666-488d-aadf-e02e569275e8,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/93f1caa3-df33-4de7-98da-40f5fc30fd52
 http://data.europa.eu/esco/skill/465e7c78-cd26-4503-a5ca-40009e807705,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ca73ac82-867a-4afa-9732-834aebe896ff
+http://data.europa.eu/esco/skill/4707da90-9cfc-46ca-8de0-38a0b7bfb137,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/b0a3bb25-a02f-43ed-ab1f-994fa66a424a
 http://data.europa.eu/esco/skill/484df271-bb52-49f1-8f50-f19624bf4df2,knowledge,optional,knowledge,http://data.europa.eu/esco/skill/e6b8f934-7f35-4dc6-9a64-f6c43acdc00b
 http://data.europa.eu/esco/skill/485cdafb-3c7f-4104-ab1c-773e6131a39a,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8
 http://data.europa.eu/esco/skill/4d85b881-e490-4b4c-897a-2faa4ef53956,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/1bba98a7-92b9-450b-9235-e0c905f8f3c4
@@ -99,15 +107,18 @@ http://data.europa.eu/esco/skill/4ddf5204-95f5-4be2-ad35-571e2f493ae5,skill/comp
 http://data.europa.eu/esco/skill/4ddf5204-95f5-4be2-ad35-571e2f493ae5,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/9e84a506-df06-4be3-874a-fa01293e3dd5
 http://data.europa.eu/esco/skill/4f060129-8b75-4d58-a8dd-515bd8fef349,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/7ee4c2ea-b349-4bd2-81a3-ec31475d4833
 http://data.europa.eu/esco/skill/4fabca9a-7435-4f33-b1da-3cdb00340fdc,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8
+http://data.europa.eu/esco/skill/4fb7c7aa-9f19-4cc3-9e19-64ce564f22f5,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/e8f80ec5-c423-4eb2-9f0f-805d22f844ae
 http://data.europa.eu/esco/skill/50b100ea-74fd-4706-99db-3e4ca55e51b8,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/c5e8abde-d2ba-4e8e-a65e-720b71180666
 http://data.europa.eu/esco/skill/541561bc-510c-4a99-881c-2d8bf5a85462,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/59ea80e1-463a-4dba-82c6-d0b6d577d532
 http://data.europa.eu/esco/skill/56042303-972b-41be-9310-58467599ff7e,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/98301d4a-2cc3-439d-8d7f-0b6ac76302bb
 http://data.europa.eu/esco/skill/56042303-972b-41be-9310-58467599ff7e,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/9e84a506-df06-4be3-874a-fa01293e3dd5
+http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/0d6714c6-720e-4985-9791-5ab85d28da79
 http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/1b70a55d-b8a4-49fc-96c6-15ab4cff2522
 http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/2b92a5b2-6758-4ee3-9fb4-b6387a55cc8f
 http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/47a49cd6-097d-457a-9f7b-c290c14930d5
 http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/4a193795-fa63-414e-9f2e-bfdb3924571e
 http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/8316979b-df5a-4dc7-98ef-61ec6a10df84
+http://data.europa.eu/esco/skill/57231a22-4da7-49c8-97b8-75672feadf1e,skill/competence,essential,skill/competence,http://data.europa.eu/esco/skill/a571ae14-3e16-4fd3-a615-5646e0b0b696
 http://data.europa.eu/esco/skill/5b9cde20-f1b9-4adc-bfb3-dbf70b14138d,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/19a8293b-8e95-4de3-983f-77484079c389
 http://data.europa.eu/esco/skill/5b9cde20-f1b9-4adc-bfb3-dbf70b14138d,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/21d2f96d-35f7-4e3f-9745-c533d2dd6e97
 http://data.europa.eu/esco/skill/5b9cde20-f1b9-4adc-bfb3-dbf70b14138d,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/4c016b68-4116-468c-9dc6-42710c239e4a
@@ -123,6 +134,7 @@ http://data.europa.eu/esco/skill/5ef0c719-5bcb-49f8-b8eb-824388225333,skill/comp
 http://data.europa.eu/esco/skill/5ef0c719-5bcb-49f8-b8eb-824388225333,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/3cd569a2-4f88-4c1e-9995-8dce8c5e51a7
 http://data.europa.eu/esco/skill/5ef0c719-5bcb-49f8-b8eb-824388225333,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/b105ec9b-0857-41d6-8d07-a83e58b73d90
 http://data.europa.eu/esco/skill/5ef0c719-5bcb-49f8-b8eb-824388225333,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ccd0a1d9-afda-43d9-b901-96344886e14d
+http://data.europa.eu/esco/skill/646d871b-4503-4dc8-a076-06d7085e4cde,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db
 http://data.europa.eu/esco/skill/64852ade-6ae1-4760-ba4a-976bf07ca255,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/c9e96450-421d-48af-9ee6-d9c50e29afc2
 http://data.europa.eu/esco/skill/64852ade-6ae1-4760-ba4a-976bf07ca255,skill/competence,optional,skill/competence,http://data.europa.eu/esco/skill/ddb65832-91a7-4157-9488-719a0e2ad87b
 http://data.europa.eu/esco/skill/64db87c7-2360-4e20-88d3-d222402e477c,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576
@@ -143,6 +155,7 @@ http://data.europa.eu/esco/skill/6a7792a9-888a-46ad-afc9-2c0d94c8fde6,skill/comp
 http://data.europa.eu/esco/skill/6a899482-8bcf-40ca-ae67-579a1cc467ab,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/7111b95d-0ce3-441a-9d92-4c75d05c4388
 http://data.europa.eu/esco/skill/6aef2baa-5fa7-4c16-bd28-3e070ec4e4df,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db
 http://data.europa.eu/esco/skill/6c08403c-a5bb-4868-b8c2-b7d039c0e511,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/9ef0f3a0-9ce2-4ef1-a987-0366b5cb2dbe
+http://data.europa.eu/esco/skill/6dc2dfac-3e21-44dd-a71c-9a1c8fe2514c,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/3ce1fe19-7f9e-4070-941d-651673a5693b
 http://data.europa.eu/esco/skill/6fe76a8b-4d5f-4cea-b76b-5908463fb014,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/1605025e-a179-421f-8f35-5b07d182a6b2
 http://data.europa.eu/esco/skill/713fb616-118e-40bc-9366-4a69879a49d5,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/c5e8abde-d2ba-4e8e-a65e-720b71180666
 http://data.europa.eu/esco/skill/71717c33-dd63-4acf-b052-a5fd5d9fc490,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db
@@ -158,6 +171,7 @@ http://data.europa.eu/esco/skill/75b30aeb-34c0-40f4-b77d-271d75a98b14,skill/comp
 http://data.europa.eu/esco/skill/78a74fd1-efc6-49dc-adb1-1b0fbe35c22c,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/85f46538-ae70-498a-bfbc-b8ddafe96c7d
 http://data.europa.eu/esco/skill/7961413f-61d0-4722-9cd9-20a050a29899,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/85f46538-ae70-498a-bfbc-b8ddafe96c7d
 http://data.europa.eu/esco/skill/7a17d7ce-01a2-4746-bbcc-22ffe22fa16e,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/42cb7669-c371-4903-9c0b-13db67b2e4bb
+http://data.europa.eu/esco/skill/7a34b3d9-bd3b-4f4e-a0f6-f97439901cb7,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/1ff53c92-370d-414b-b758-b0a1b8026853
 http://data.europa.eu/esco/skill/7a757fa5-9a6f-43ab-9e66-f8f4dba1ffcb,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/9ce670ec-318c-4a91-9179-03437db728dc
 http://data.europa.eu/esco/skill/7adb8473-bcc6-4ff8-9850-76d945d40092,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c
 http://data.europa.eu/esco/skill/7adb8473-bcc6-4ff8-9850-76d945d40092,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ccdbd9bb-4faf-403c-a968-e8bf487f8a53
@@ -184,6 +198,7 @@ http://data.europa.eu/esco/skill/85c11255-469f-41bd-a6d1-382bc4a87783,skill/comp
 http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/a4346013-a967-4a58-a533-6b32ad1364c5
 http://data.europa.eu/esco/skill/86d2e2ea-1ba2-4aa6-b465-8a1f9abc81b8,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db
 http://data.europa.eu/esco/skill/8b94aa1e-89c9-459d-b3b4-1dfab8dec2df,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/484df271-bb52-49f1-8f50-f19624bf4df2
+http://data.europa.eu/esco/skill/8d202e22-85e9-47b1-a1e0-3296d17244cd,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/a56dec32-05ef-45de-a256-ee6741f356db
 http://data.europa.eu/esco/skill/8fa840f7-e66a-4370-8e6d-7d554260c31c,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/f6424ebb-8401-446b-9f7e-10d7c854da02
 http://data.europa.eu/esco/skill/8fa840f7-e66a-4370-8e6d-7d554260c31c,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/f9e788df-d68a-4f92-92c7-80e135fc35ff
 http://data.europa.eu/esco/skill/90be83d9-56f1-46a4-a6bc-96c51f6c9025,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/ed1fbdc3-1071-423c-9bb4-e3288ca6d1fe
@@ -194,6 +209,8 @@ http://data.europa.eu/esco/skill/913e7e83-b8f8-4574-b1ca-1b38f3fd974a,skill/comp
 http://data.europa.eu/esco/skill/913e7e83-b8f8-4574-b1ca-1b38f3fd974a,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/7557f0f4-b8bc-4ac0-b91e-222ab1ba744f
 http://data.europa.eu/esco/skill/913e7e83-b8f8-4574-b1ca-1b38f3fd974a,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/85f46538-ae70-498a-bfbc-b8ddafe96c7d
 http://data.europa.eu/esco/skill/9190d87f-9792-42e0-bb7f-64294a656bcd,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/cdd8b6b2-2fd9-453c-8d62-8a1dc6efcd49
+http://data.europa.eu/esco/skill/925cb6fb-9506-48a5-9106-400088a4a436,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6a536b36-c5c7-4d10-bf67-a4fb0f8549b2
+http://data.europa.eu/esco/skill/940a70fa-7c58-423b-8d03-34920b59f0f7,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/d5a59ca8-2e91-472e-8571-d12ce4478679
 http://data.europa.eu/esco/skill/96550830-539b-4746-96aa-92aa4959945d,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/0daaf096-1639-461c-bf1a-bbeea77e6b67
 http://data.europa.eu/esco/skill/96550830-539b-4746-96aa-92aa4959945d,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6eff134b-e34f-4d6e-a6e8-5e47cf2228d0
 http://data.europa.eu/esco/skill/9714735d-6f60-440b-bdbc-aaf45ebcbe78,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/0ee94c0a-3716-494a-95a2-dcbab9e58be2
@@ -211,6 +228,7 @@ http://data.europa.eu/esco/skill/a47d194d-0ffd-4aaa-b695-fbbe0255000e,skill/comp
 http://data.europa.eu/esco/skill/a47d194d-0ffd-4aaa-b695-fbbe0255000e,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c
 http://data.europa.eu/esco/skill/a4a882a1-0263-4dd2-b29a-f0028cac2393,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c
 http://data.europa.eu/esco/skill/a4c2aa71-086f-4a46-b481-2619673c9dfe,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ca73ac82-867a-4afa-9732-834aebe896ff
+http://data.europa.eu/esco/skill/a571ae14-3e16-4fd3-a615-5646e0b0b696,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/c5e8abde-d2ba-4e8e-a65e-720b71180666
 http://data.europa.eu/esco/skill/a8797f21-1af0-4c5e-98ca-bf1442929363,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ca73ac82-867a-4afa-9732-834aebe896ff
 http://data.europa.eu/esco/skill/ab67fbfb-0ca7-4345-8bf6-af8f59480212,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/47ca0da1-cae5-4395-ae6b-fd97b9ff48d3
 http://data.europa.eu/esco/skill/ac516e9b-8bfa-4b72-8e3e-340b0a3a51d5,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/d6c29154-9cc1-48a4-a2de-3d1d0d7f0831
@@ -253,6 +271,9 @@ http://data.europa.eu/esco/skill/c2296e2e-5fef-4f24-a24f-e5b3792268be,skill/comp
 http://data.europa.eu/esco/skill/c3e36d05-8ae8-447f-bb2b-6f9409f85389,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/348b74cd-49ce-4844-8bdf-ec188b497213
 http://data.europa.eu/esco/skill/c4b1f326-224a-420a-b8b3-814a8f13b6cb,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/95ee5e38-5c1e-4cd2-a21d-6921390025a9
 http://data.europa.eu/esco/skill/c544a9f3-5945-4b54-afed-de0697852817,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8
+http://data.europa.eu/esco/skill/c77db25e-bb51-4a10-b2ad-99b48b1b4a37,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/53456d90-8c0d-4bd2-9f1b-312619b6e2a6
+http://data.europa.eu/esco/skill/c77db25e-bb51-4a10-b2ad-99b48b1b4a37,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/e043aeeb-78f5-4049-afbf-12bba52225bc
+http://data.europa.eu/esco/skill/c95c29fe-3971-46b7-80e9-1f7e75ba99b3,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ad59afe4-6f8a-4bc4-acfd-0f228277508a
 http://data.europa.eu/esco/skill/cb1b0777-0388-4b01-a0cf-7c6bbfbbd61d,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/2fb8480e-de3c-462b-b169-e8bbb344da68
 http://data.europa.eu/esco/skill/cbe2c304-1e7d-489a-97d9-a7d3e37a9db6,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/6fa1c2c0-a012-4ca0-9642-e01569ba322c
 http://data.europa.eu/esco/skill/cbe2c304-1e7d-489a-97d9-a7d3e37a9db6,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/ccdbd9bb-4faf-403c-a968-e8bf487f8a53
@@ -302,6 +323,7 @@ http://data.europa.eu/esco/skill/f6868852-9bf6-4899-a5d6-5f9532fb877d,skill/comp
 http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/2180bd8c-86de-4889-8165-adac902eee9d
 http://data.europa.eu/esco/skill/f7e2eb04-3e50-4561-bce1-7e51a1fec308,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/2450c3b3-e78e-435b-b84d-e05d984e71dc
 http://data.europa.eu/esco/skill/f88cb903-83a2-44a3-98a8-e72180ec37a9,skill/competence,essential,knowledge,http://data.europa.eu/esco/skill/ed3f3dba-3a35-4ed5-b113-67f4d10ef4c8
+http://data.europa.eu/esco/skill/f975091a-e5a5-4472-ac17-11680e53e98f,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/2fb8480e-de3c-462b-b169-e8bbb344da68
 http://data.europa.eu/esco/skill/f9e788df-d68a-4f92-92c7-80e135fc35ff,knowledge,essential,knowledge,http://data.europa.eu/esco/skill/553e1d2d-abf1-4b37-8ac4-c5c78a8edbc0
 http://data.europa.eu/esco/skill/f9e788df-d68a-4f92-92c7-80e135fc35ff,knowledge,essential,knowledge,http://data.europa.eu/esco/skill/d0c6d77e-cb25-4770-bf77-2073fc5f7523
 http://data.europa.eu/esco/skill/fbafa41f-cd05-4109-a649-8b44d306d779,skill/competence,optional,knowledge,http://data.europa.eu/esco/skill/fecf8a0d-62c4-4e71-9b03-0f4fc2ad7bf5

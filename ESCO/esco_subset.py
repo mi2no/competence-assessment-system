@@ -3,7 +3,14 @@ import pandas as pd
 def load(name, lang) -> pd.DataFrame:
     dir = "ESCO dataset - v1.2.1 - classification - " + lang + " - csv"
     file = name + "_" + lang + ".csv"
-    return pd.read_csv(dir + "/" + file, dtype = {"code" : str})
+    
+    df = pd.read_csv(dir + "/" + file, dtype = {"code" : str})
+
+    if "modifiedDate" in df.columns and "conceptUri" in df.columns:
+        df["modifiedDate"] = pd.to_datetime(df["modifiedDate"], format = "ISO8601")
+        df = df.sort_values("modifiedDate").drop_duplicates(subset = "conceptUri", keep = "last")
+
+    return df
 
 output = "IT_subset"
 
@@ -40,7 +47,7 @@ def get_skill_skill_relations_subset(skill_uri : frozenset) -> pd.DataFrame:
     ]
 
 def get_broader_relations_skill_pillar(skill_uri : frozenset):
-    out, stack = set(), [*skill_uri]
+    out, stack = set(skill_uri), [*skill_uri]
 
     pillar = load("broaderRelationsSkillPillar", "en")
     parent = pillar.groupby("conceptUri")["broaderUri"].apply(list).to_dict()
@@ -51,9 +58,9 @@ def get_broader_relations_skill_pillar(skill_uri : frozenset):
                 out.add(p)
                 stack.append(p)
 
-    return pillar[
+    return (pillar[
             pillar["conceptUri"].astype(str).isin(out) & pillar["broaderUri"].astype(str).isin(out)
-    ]
+    ], out)
 
 def get_skills_hierarchy(skill_uri : frozenset) -> pd.DataFrame:
     hierarchy = load("skillsHierarchy", "en")
@@ -70,14 +77,14 @@ save(occupation_skill_relations_subset, "occupationSkillRelations")
 
 skill_uris = frozenset(occupation_skill_relations_subset["skillUri"].unique())
 
+broader_relations_skill_pillar, skill_uris = get_broader_relations_skill_pillar(skill_uris)
+save(broader_relations_skill_pillar, "broaderRelationsSkillPillar")
+
 skills_subset = get_skills_subset(skill_uris)
 save(skills_subset, "skills")
 
 skill_skill_relations_subset = get_skill_skill_relations_subset(skill_uris)
 save(skill_skill_relations_subset, "skillSkillRelations")
-
-broader_relations_skill_pillar = get_broader_relations_skill_pillar(skill_uris)
-save(broader_relations_skill_pillar, "broaderRelationsSkillPillar")
 
 skills_hierarchy = get_skills_hierarchy(skill_uris)
 save(skills_hierarchy, "skillsHierarchy")
