@@ -40,3 +40,5 @@ application-local.yaml
 /standalone/data/
 /standalone/log/
 /standalone/tmp/
+
+.venv
