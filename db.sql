@@ -1,9 +1,25 @@
+ALTER TABLE artifact DROP FOREIGN KEY FKartifact330133;
+ALTER TABLE proof DROP FOREIGN KEY FKproof61972;
+ALTER TABLE proof DROP FOREIGN KEY FKproof387222;
+ALTER TABLE subject DROP FOREIGN KEY FKsubject527698;
+ALTER TABLE `user` DROP FOREIGN KEY FKuser41252;
+ALTER TABLE task DROP FOREIGN KEY FKtask223007;
+ALTER TABLE task DROP FOREIGN KEY FKtask2523;
+ALTER TABLE artifact DROP FOREIGN KEY FKartifact485763;
+ALTER TABLE subject_teacher DROP FOREIGN KEY FKsubject_te508455;
+ALTER TABLE subject_teacher DROP FOREIGN KEY FKsubject_te471813;
+DROP TABLE IF EXISTS `user`;
+DROP TABLE IF EXISTS artifact;
+DROP TABLE IF EXISTS proof;
+DROP TABLE IF EXISTS competence;
+DROP TABLE IF EXISTS subject;
+DROP TABLE IF EXISTS source_type;
+DROP TABLE IF EXISTS task;
+DROP TABLE IF EXISTS subject_teacher;
 CREATE TABLE `user` (id int(10) NOT NULL AUTO_INCREMENT, source_type_id int(10) NOT NULL, source_id int(10) NOT NULL, type varchar(255) NOT NULL, PRIMARY KEY (id));
 CREATE TABLE artifact (id int(10) NOT NULL AUTO_INCREMENT, `date` date NOT NULL, source_url varchar(255) NOT NULL, description varchar(255), user_id int(10) NOT NULL, task_id int(10), PRIMARY KEY (id)) comment='If task_id is null, then this artifact is a personal project. Otherwise it is a task solution.';
 CREATE TABLE proof (id int(10) NOT NULL AUTO_INCREMENT, level tinyint NOT NULL, description varchar(255), artifact_id int(10) NOT NULL, competence_id int(10) NOT NULL, PRIMARY KEY (id));
-CREATE TABLE competence (id int(10) NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL UNIQUE, name_pl varchar(255) NOT NULL UNIQUE, concept_type varchar(255) NOT NULL, skill_type varchar(255) NOT NULL, PRIMARY KEY (id));
-CREATE TABLE competence_relations (source_id int(10) NOT NULL, target_id int(10) NOT NULL, type_id int(10) NOT NULL);
-CREATE TABLE relation_type (id int(10) NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL, PRIMARY KEY (id));
+CREATE TABLE competence (id int(10) NOT NULL AUTO_INCREMENT, concept_uri varchar(255) NOT NULL, skill_type varchar(255) NOT NULL, name varchar(255) NOT NULL UNIQUE, description varchar(255), definition varchar(255), PRIMARY KEY (id));
 CREATE TABLE subject (id int(10) NOT NULL AUTO_INCREMENT, source_type_id int(10) NOT NULL, source_id int(10) NOT NULL, PRIMARY KEY (id));
 CREATE TABLE source_type (id int(10) NOT NULL AUTO_INCREMENT, name varchar(255) NOT NULL, PRIMARY KEY (id)) comment='This entity determines the source of an asset. The database doesn''t store all necessary information and must rely on outside sources. 
 For instance user name, semester and various other info will be provided via USOS API. For debug purposes some users will be INTERNAL and stored directly in the database. 
@@ -14,9 +30,6 @@ CREATE TABLE subject_teacher (user_id int(10) NOT NULL, subject_id int(10) NOT N
 ALTER TABLE artifact ADD CONSTRAINT FKartifact330133 FOREIGN KEY (user_id) REFERENCES `user` (id);
 ALTER TABLE proof ADD CONSTRAINT FKproof61972 FOREIGN KEY (artifact_id) REFERENCES artifact (id);
 ALTER TABLE proof ADD CONSTRAINT FKproof387222 FOREIGN KEY (competence_id) REFERENCES competence (id);
-ALTER TABLE competence_relations ADD CONSTRAINT FKcompetence637597 FOREIGN KEY (source_id) REFERENCES competence (id);
-ALTER TABLE competence_relations ADD CONSTRAINT FKcompetence197407 FOREIGN KEY (target_id) REFERENCES competence (id);
-ALTER TABLE competence_relations ADD CONSTRAINT FKcompetence319715 FOREIGN KEY (type_id) REFERENCES relation_type (id);
 ALTER TABLE subject ADD CONSTRAINT FKsubject527698 FOREIGN KEY (source_type_id) REFERENCES source_type (id);
 ALTER TABLE `user` ADD CONSTRAINT FKuser41252 FOREIGN KEY (source_type_id) REFERENCES source_type (id);
 ALTER TABLE task ADD CONSTRAINT FKtask223007 FOREIGN KEY (teacher_id) REFERENCES `user` (id);
