@@ -88,3 +88,7 @@ save(skill_skill_relations_subset, "skillSkillRelations")
 
 skills_hierarchy = get_skills_hierarchy(skill_uris)
 save(skills_hierarchy, "skillsHierarchy")
+
+
+
+save(skills_subset[["conceptUri", "skillType", "preferredLabel", "definition", "description"]], "competence")
