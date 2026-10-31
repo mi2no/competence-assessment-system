@@ -176,6 +176,25 @@
             <artifactId>commons-logging-jboss-logging</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- Database connection -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.transaction</groupId>
+            <artifactId>jakarta.transaction-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -209,7 +228,10 @@
                 <version>${version.wildfly.maven.plugin}</version>
                 <configuration>
                     <discover-provisioning-info>
-                        <version>${version.wildfly.bom}</version>
+                        <addOns>
+                            <addOn>mariadb:default</addOn>
+                            <addOn>wildfly-cli</addOn>
+                        </addOns>
                     </discover-provisioning-info>
                 </configuration>
                 <executions>
