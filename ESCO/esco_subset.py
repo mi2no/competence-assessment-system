@@ -91,4 +91,4 @@ save(skills_hierarchy, "skillsHierarchy")
 
 
 
-save(skills_subset[["conceptUri", "skillType", "preferredLabel", "definition", "description"]], "competence")
+save(skills_subset[["conceptUri", "skillType", "preferredLabel", "description"]], "competence")
