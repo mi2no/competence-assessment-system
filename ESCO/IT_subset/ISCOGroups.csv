@@ -1,0 +1,163 @@
+conceptType,conceptUri,code,preferredLabel,status,altLabels,inScheme,description
+ISCOGroup,http://data.europa.eu/esco/isco/C25,25,Information and communications technology professionals,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Information and communications technology professionals conduct research; plan, design, write, test, provide advice and improve information technology systems, hardware, software and related concepts for specific applications; develop associated documentation including principles, policies and procedures; and design, develop, control, maintain and support databases and other information systems to ensure optimal performance and data integrity and security.
+Tasks performed by workers in this sub-major group usually include: researching information technology use in business functions; identifying areas for improvement and researching the theoretical aspects and operational methods for the use of computers; evaluating, planning and designing hardware or software configurations for specific applications including for Internet, Intranet and multimedia systems; designing, writing, testing and maintaining computer programs; designing and developing database architecture and database management systems; developing and implementing security plans and data administration policy, and administering computer networks and related computing environments; analysing, developing, interpreting and evaluating complex system design and architecture specifications, data models and diagrams in the development, configuration and integration of computer systems.
+Occupations in this sub-major group are classified into the following minor groups:
+251 Software and Applications Developers and Analysts
+252 Database and Network Professionals."
+ISCOGroup,http://data.europa.eu/esco/isco/C251,251,Software and applications developers and analysts,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Software and applications developers and analysts conduct research; plan, design, write, test, provide advice on and improve information technology systems such as hardware, software and other applications to meet specific requirements. Competent performance in most occupations in this sub-major group requires skills at the fourth ISCO skill level.
+Tasks performed usually include: researching information technology use in business functions and identifying areas in which improvements could be made to maximize effectiveness and efficiency; conducting research into the theoretical aspects of and operational methods for the use of computers; evaluating, planning and designing hardware or software configurations for specific applications; designing, writing, testing and maintaining computer programs for specific requirements; evaluating, planning and designing Internet, Intranet and multimedia systems.
+Occupations in this minor group are classified into the following unit groups:
+2511 Systems Analysts 2512 Software Developers
+2513 Web and Multimedia Developers 2514 Applications Programmers
+2519 Software and Applications Developers and Analysts Not Elsewhere Classified."
+ISCOGroup,http://data.europa.eu/esco/isco/C2511,2511,Systems analysts,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Systems analysts conduct research, analyse and evaluate client information technology requirements, procedures or problems, and develop and implement proposals, recommendations, and plans to improve current or future information systems.
+Tasks include -
+(a) consulting with users to formulate document requirements and with management to ensure agreement on systems principles;
+(b) identifying and analysing business processes, procedures and work practices;
+(c) identifying and evaluating inefficiencies and recommending optimal business practices and system functionality and behaviour;
+(d) taking responsibility for deploying functional solutions, such as creating, adopting and implementing system test plans;
+(e) developing functional specifications for use by systems developers;
+(f) expanding or modifying systems to improve workflow or serve new purposes;
+(g) coordinating and linking the computer systems within an organization to increase compatibility.
+Examples of the occupations classified here: - Business analyst (IT)
+- Computer scientist
+- Information systems analyst
+- Systems consultant
+- Systems designer (IT)
+Some related occupations classified elsewhere:
+- Systems administrator (computers) - 2522
+- Communications analyst (computers) - 2523
+- Network analyst - 2523."
+ISCOGroup,http://data.europa.eu/esco/isco/C2512,2512,Software developers,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Software developers research, analyse and evaluate requirements for existing or new software applications and operating systems, and design, develop, test and maintain software solutions to meet these requirements.
+Tasks include -
+(a) researching, analysing and evaluating requirements for software applications and operating systems;
+(b) researching, designing and developing computer software systems;
+(c) consulting with engineering staff to evaluate interfaces between hardware and software;
+(d) developing and directing software testing and validation procedures;
+(e) modifying existing software to correct errors, to adapt it to new hardware or to upgrade interfaces and improve performance;
+(f) directing software programming and development of documentation;
+(g) assessing, developing, upgrading and documenting maintenance procedures for operating systems, communications environments and applications software;
+(h) consulting with customers concerning maintenance of software systems.
+Examples of the occupations classified here:
+- Programmer analyst
+- Software designer - Software developer
+- Software engineer
+Some related occupations classified elsewhere:
+- Applications programmers - 2514."
+ISCOGroup,http://data.europa.eu/esco/isco/C2513,2513,Web and multimedia developers,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Web and multimedia development professionals combine design and technical knowledge to research, analyse, evaluate, design, program and modify websites and applications that draw together text, graphics, animations, imaging, audio and video displays and other interactive media.
+Tasks include -
+(a) analysing, designing and developing Internet sites by applying a mixture of artistry and creativity with software programming and scripting languages and interfacing with operating environments;
+(b) designing and developing digital animations, imaging, presentations, games, audio and video clips and Internet applications using multimedia software, tools and utilities, interactive graphics and programming languages;
+(c) communicating with network specialists regarding web-related issues such as security and hosting websites, to control and enforce Internet and web server security, space allocation, user access, business continuity, website backup and disaster recovery planning; (d) designing, developing and integrating computer code with other specialized inputs such as image files, audio files and scripting languages, to produce, maintain and support websites;
+(e) assisting in analysing, specifying and developing Internet strategies, web-based methodologies and development plans.
+Examples of the occupations classified here:
+- Animation programmer
+- Computer games programmer
+- Internet developer - Multimedia programmer
+- Website architect
+- Website developer
+Some related occupations classified elsewhere:
+- Website designer - 2166 - Webmaster - 3514
+- Website administrator - 3514
+- Website technician - 3514."
+ISCOGroup,http://data.europa.eu/esco/isco/C2514,2514,Applications programmers,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Applications programmers write and maintain programmable code outlined in technical instructions and specifications for software applications and operating systems.
+Tasks include -
+(a) writing and maintaining program code outlined in instructions and specifications in accordance with quality accredited standards;
+(b) revising, repairing or expanding existing programs to increase operating efficiency or adapt to new requirements;
+(c) conducting trial runs of programs and software applications to confirm that they will produce the desired information;
+(d) compiling and writing documentation of program development;
+(e) identifying and communicating technical problems, processes and solutions.
+Examples of the occupations classified here:
+- Applications programmer
+Some related occupations classified elsewhere: - Programmer analyst - 2512
+- Software developer - 2512
+- Multimedia programmer - 2513."
+ISCOGroup,http://data.europa.eu/esco/isco/C2519,2519,Software and applications developers and analysts not elsewhere classified,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","This unit group covers software and applications developers and analysts not classified elsewhere in Minor Group 251: Software and Applications Developers and Analysts. For instance, the group includes those professionals specializing in quality assurance, including software testing.
+In such cases tasks would include -
+(a) developing and documenting software testing plans;
+(b) installing software and hardware and configuring operating system software in preparation for testing;
+(c) verifying that programs function according to user requirements and established guidelines;
+(d) executing, analysing and documenting results of software application tests and information and telecommunication systems tests;
+(e) developing and implementing software and information system testing policies, procedures and scripts.
+Examples of the occupations classified here:
+- Quality assurance analyst (computers)
+- Software tester - Systems tester."
+ISCOGroup,http://data.europa.eu/esco/isco/C252,252,Database and network professionals,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Database and network professionals design, develop, control, maintain and support the optimal performance and security of information technology systems and infrastructure, including databases, hardware and software, networks and operating systems.
+Tasks performed usually include: designing and developing database architecture, data structures, dictionaries and naming conventions for information systems projects; designing, constructing, modifying, integrating, implementing and testing database management systems; developing and implementing security plans, data administration policy, documentation and standards; maintaining and administering computer networks and related computing environments; analysing, developing, interpreting and evaluating complex system design and architecture specifications, data models and diagrams in the development, configuration and integration of computer systems.
+Occupations in this minor group are classified into the following unit groups:
+2521 Database Designers and Administrators
+2522 Systems Administrators
+2523 Computer Network Professionals
+2529 Database and Network Professionals Not Elsewhere Classified."
+ISCOGroup,http://data.europa.eu/esco/isco/C2521,2521,Database designers and administrators,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Database designers and administrators design, develop, control, maintain and support the optimal performance and security of databases.
+Tasks include -
+(a) designing and developing database architecture, data structures, tables, dictionaries and naming conventions for information systems projects;
+(b) designing, constructing, modifying, integrating, implementing and testing database management systems;
+(c) conducting research and providing advice on the selection, application and implementation of database management tools;
+(d) developing and implementing data administration policy, documentation, standards and models;
+(e) developing policies and procedures for database access and usage and for the backup and recovery of data;
+(f) performing the operational establishment and preventive maintenance of backups, recovery procedures, and enforcing security and integrity controls.
+Examples of the occupations classified here:
+- Data administrator - Database administrator - Database analyst
+- Database architect
+Some related occupations classified elsewhere:
+- Network administrator - 2522
+- Systems administrator (computers) - 2522
+- Webmaster - 3514
+- Website administrator - 3514."
+ISCOGroup,http://data.europa.eu/esco/isco/C2522,2522,Systems administrators,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Systems administrators develop, control, maintain and support the optimal performance and security of information technology systems.
+Tasks include -
+(a) maintaining and administering computer networks and related computing environments, including computer hardware, systems software, applications software and all configurations;
+(b) recommending changes to improve systems and network configurations, and determining hardware or software requirements related to such changes;
+(c) diagnosing hardware and software problems;
+(d) performing data backups and disaster recovery operations;
+(e) operating master consoles to monitor the performance of computer systems and networks, and to coordinate computer network access and use.
+Examples of the occupations classified here:
+- Network administrator
+- Systems administrator (computers)
+Some related occupations classified elsewhere:
+- Database administrator - 2521
+- Network analyst - 2523
+- Webmaster - 3514
+- Website administrator - 3514
+- Website technician - 3514."
+ISCOGroup,http://data.europa.eu/esco/isco/C2523,2523,Computer network professionals,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","Computer network professionals research, analyse, design, test and recommend strategies for network architecture and development. They implement, manage, maintain and configure network hardware and software, and monitor, troubleshoot and optimize performance.
+Tasks include -
+(a) analysing, developing, interpreting and evaluating complex system design and architecture specifications, data models and diagrams in the development, configuration and integration of computer systems;
+(b) researching, analysing, evaluating and monitoring network infrastructure to ensure that networks are configured to operate at optimal performance;
+(c) assessing and recommending improvements to network operations and integrated hardware, software, communications and operating systems;
+(d) providing specialist skills in supporting and troubleshooting network problems and emergencies;
+(e) installing, configuring, testing, maintaining and administering new and upgraded networks, software database applications, servers and workstations;
+(f) preparing and maintaining procedures and documentation for network inventory, and recording diagnosis and resolution of network faults, enhancements and modifications to networks and maintenance instructions;
+(g) monitoring network traffic and activity, capacity and usage to ensure continued integrity and optimal network performance.
+Examples of the occupations classified here:
+- Communications analyst (computers)
+- Network analyst
+Some related occupations classified elsewhere:
+- Systems analysts - 2511
+- Network administrator - 2522."
+ISCOGroup,http://data.europa.eu/esco/isco/C2529,2529,Database and network professionals not elsewhere classified,released,,"http://data.europa.eu/esco/concept-scheme/occupations,
+http://data.europa.eu/esco/concept-scheme/isco","This unit group includes database and network professionals not classified elsewhere in Minor Group 252: Database and Network Professionals. For instance, the group includes information and communications technology security specialists.
+In such cases tasks would include -
+(a) developing plans to safeguard computer files against accidental or unauthorized modification, destruction or disclosure and to meet emergency data processing needs;
+(b) training users and promoting security awareness to ensure system security and to improve server and network efficiency;
+(c) conferring with users to discuss issues such as computer data access needs, security violations and programming changes; (d) monitoring current reports of computer viruses to determine when to update virus protection systems;
+(e) modifying computer security files to incorporate new software, correct errors or change individual access status;
+(f) monitoring use of data files and regulate access to safeguard information in computer files;
+(g) performing risk assessments and executing tests of data processing system to ensure functioning of data processing activities and security measures;
+(h) encrypting data transmissions and erecting firewalls to conceal confidential information as it is being transmitted and to keep out tainted digital transfers.
+Examples of the occupations classified here:
+- Data miner
+- Digital forensic specialist
+- Security specialist (ICT)."
