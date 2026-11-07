@@ -22,15 +22,15 @@ public class Competence {
     @Column(nullable = false, name = "skill_type")
     public String skillType;
 
-    public String definition;
+    public String description;
 
     public Competence() {}
 
-    public Competence(Integer id, String conceptUri, String name, String skillType, String definition) {
+    public Competence(Integer id, String conceptUri, String name, String skillType, String description) {
         this.id = id;
         this.conceptUri = conceptUri;
         this.name = name;
         this.skillType = skillType;
-        this.definition = definition;
+        this.description = description;
     }
 }
