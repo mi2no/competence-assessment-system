@@ -191,8 +191,8 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-multipart-provider</artifactId>
-            <!--<version>7.0.5.Final</version>-->
-            <scope>compile</scope>
+            <!-- provided: WildFly ships RESTEasy and exposes this module to JAX-RS deployments -->
+            <scope>provided</scope>
         </dependency>
 
         <!--See https://issues.redhat.com/browse/WFLY-19779 and https://github.com/wildfly/quickstart/pull/957/

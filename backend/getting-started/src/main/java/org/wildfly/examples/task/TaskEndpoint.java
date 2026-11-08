@@ -20,12 +20,16 @@ public class TaskEndpoint {
     @Path("{id}/solution/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadSolution(@PathParam("id") int taskId, MultipartFormDataInput input) {
-        final Integer id = em.createQuery("SELECT t.id FROM Task t WHERE t.id = :id", Integer.class)
-                .setParameter("id", taskId).getSingleResultOrNull();
+        /*{ // Check if task of given id exists
+            final Integer id = em.createQuery("SELECT t.id FROM Task t WHERE t.id = :id", Integer.class)
+                    .setParameter("id", taskId).getSingleResultOrNull();
 
-        if (id == null) return Response.status(Response.Status.NOT_FOUND).build();
+            if (id == null) return Response.status(Response.Status.NOT_FOUND).build();
+        }*/
 
         final List<InputPart> files = input.getFormDataMap().get("files");
+
+        if (files == null || files.isEmpty()) return Response.status(Response.Status.NO_CONTENT).build();
 
         for (InputPart file : files)
             System.out.println(file.getFileName());
