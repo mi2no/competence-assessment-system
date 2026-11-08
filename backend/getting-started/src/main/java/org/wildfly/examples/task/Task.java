@@ -6,10 +6,12 @@ import jakarta.validation.constraints.NotNull;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 @Entity
@@ -40,10 +42,4 @@ public class Task {
     @NotNull
     @Column(name = "subject_id")
     public Integer subjectId;
-
-    public void createArchive(List<InputPart> files, Path destination) throws IOException {
-        try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(destination))) {
-
-        }
-    }
 }
