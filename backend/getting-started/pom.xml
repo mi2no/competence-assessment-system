@@ -188,6 +188,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <!--<version>7.0.5.Final</version>-->
+            <scope>compile</scope>
+        </dependency>
+
         <!--See https://issues.redhat.com/browse/WFLY-19779 and https://github.com/wildfly/quickstart/pull/957/
             httpclient needs commons-logging yet the server uses this instead,
             to be fully compatible on apps we need to add this dependency whenever commons-logging is needed,
