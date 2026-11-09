@@ -18,3 +18,30 @@ form.addEventListener("submit", async (event) => {
     const result = await response;
     console.log(result);
 });
+
+const refresh = document.querySelector("button.refresh");
+const queue = document.querySelector("#queue");
+
+refresh.onclick = async event => {
+    const response = await fetch("/api/artifact/queue", {
+        method: "GET"
+    });
+
+    if (!response.ok) {
+        throw new Error(`Upload failed: ${response.status}`);
+    }
+
+    await response.json().then(json => {
+        console.log(json);
+        json.map(entry => {
+            const li = document.createElement("li");
+
+            const uuid = document.createTextNode(entry.uuid);
+            const date = document.createTextNode(entry.date);
+            const state = document.createTextNode(entry.state);
+
+            li.append(uuid, date, state);
+            queue.append(li);
+        });
+    });
+};
