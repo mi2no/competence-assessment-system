@@ -21,6 +21,9 @@ public class ArtifactEndpoint {
     @PersistenceContext(name = "getting-started-PU")
     EntityManager em;
 
+    @Inject
+    ArtifactStorage storage;
+
     @GET
     @Path("/queue")
     @Produces(MediaType.APPLICATION_JSON)
@@ -30,5 +33,16 @@ public class ArtifactEndpoint {
                         .setParameter("id", 1).getResultList();
 
         return Response.ok().entity(queue).build();
+    }
+
+    @GET
+    @Path("/structure")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getStructure(@QueryParam("uuid") UUID artifactId) {
+        final List<ArtifactStorage.FileInfo> structure = storage.getStructure(artifactId);
+
+        return structure == null ?
+                Response.status(Response.Status.NOT_FOUND).build()
+                : Response.ok().entity(structure).build();
     }
 }

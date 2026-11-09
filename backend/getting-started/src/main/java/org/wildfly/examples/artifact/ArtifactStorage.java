@@ -3,17 +3,20 @@ package org.wildfly.examples.artifact;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.PersistenceContext;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.zip.ZipEntry;
+import java.util.zip.ZipException;
+import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
 @ApplicationScoped
@@ -48,5 +51,34 @@ public class ArtifactStorage {
         }
 
         return id;
+    }
+
+    public record FileInfo (
+            String name,
+            long size
+    ) {}
+
+    public List<FileInfo> getStructure(UUID artifactId) {
+        final File file = Path.of(dir).resolve(artifactId + ".zip").toFile();
+
+        if (!file.exists()) return null;
+
+        try (final ZipFile zip = new ZipFile(file)) {
+            final List<FileInfo> result = new ArrayList<>();
+            final Enumeration<? extends  ZipEntry> en = zip.entries();
+
+            while (en.hasMoreElements()) {
+                final var entry = en.nextElement();
+
+                result.add(new FileInfo(entry.getName(), entry.getSize()));
+            }
+
+            return result;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

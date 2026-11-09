@@ -22,6 +22,18 @@ form.addEventListener("submit", async (event) => {
 const refresh = document.querySelector("button.refresh");
 const queue = document.querySelector("#queue");
 
+async function getArtifactStructure(uuid){
+    const response = await fetch('/api/artifact/structure?' + new URLSearchParams({
+        uuid: uuid
+    }).toString(), {
+        method: "GET"
+    });
+
+    if (!response.ok) throw new Error(`Structure GET faildef: ${response.status}`);
+
+    return await response.json();
+}
+
 refresh.onclick = async event => {
     const response = await fetch("/api/artifact/queue", {
         method: "GET"
@@ -42,6 +54,11 @@ refresh.onclick = async event => {
 
             li.append(uuid, date, state);
             queue.append(li);
+
+            console.log(entry.uuid);
+            getArtifactStructure(entry.uuid).then(json => {
+                console.log(json);
+            });
         });
     });
 };
