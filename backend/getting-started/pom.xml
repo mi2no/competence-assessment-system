@@ -212,6 +212,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Hibernate-specific annotations (e.g. @JdbcTypeCode); provided by WildFly's JPA subsystem -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.transaction</groupId>
             <artifactId>jakarta.transaction-api</artifactId>

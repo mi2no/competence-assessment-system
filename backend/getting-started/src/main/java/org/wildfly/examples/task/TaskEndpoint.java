@@ -3,16 +3,21 @@ package org.wildfly.examples.task;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
-import org.wildfly.examples.ArtifactStorage;
+import org.wildfly.examples.artifact.Artifact;
+import org.wildfly.examples.artifact.ArtifactQueue;
+import org.wildfly.examples.artifact.ArtifactStorage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @Path("/api/task")
 public class TaskEndpoint {
@@ -24,6 +29,7 @@ public class TaskEndpoint {
     ArtifactStorage storage;
 
     @POST
+    @Transactional
     @Path("{id}/solution/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadSolution(@PathParam("id") int taskId, MultipartFormDataInput input) {
@@ -46,7 +52,11 @@ public class TaskEndpoint {
 
             for (var file : files) filesData.add(new ArtifactStorage.FileData(file.getFileName(), file.getBody()));
 
-            storage.store(filesData);
+            final UUID storedId = storage.store(filesData);
+
+            em.persist(new ArtifactQueue(
+                    LocalDate.now(), storedId, 1, ArtifactQueue.State.WAITING
+            ));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
