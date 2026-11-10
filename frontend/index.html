@@ -5,14 +5,9 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>frontend</title>
-    <script src="script.js" defer></script>
   </head>
   <body>
-    <form>
-      <input type="file" name="files" multiple required>
-      <input type="submit">
-    </form>
-    <button class="refresh"></button>
-    <ul id="queue"></ul>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

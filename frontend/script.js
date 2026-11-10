@@ -56,9 +56,10 @@ refresh.onclick = async event => {
             queue.append(li);
 
             console.log(entry.uuid);
-            getArtifactStructure(entry.uuid).then(json => {
-                console.log(json);
-            });
+            getArtifactStructure(entry.uuid).then(json => json.map(file => {
+                const name = document.createTextNode(file.name);
+                li.append(name);
+            }));
         });
     });
 };

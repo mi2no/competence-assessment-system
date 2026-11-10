@@ -1,0 +1,9 @@
+section > div {
+    display: flex;
+    flex-direction: row;
+}
+
+section .solutions div {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
