@@ -2,11 +2,10 @@ package org.wildfly.examples.artifact;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.ws.rs.core.StreamingOutput;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
@@ -76,4 +75,35 @@ public class ArtifactStorage {
 
         return null;
     }
+
+    public record StoredFileData (
+            InputStream stream,
+            long size
+    ) {}
+
+    public StoredFileData getFile(UUID artifactId, String path) throws IOException {
+        final File file = Path.of(dir).resolve(artifactId + ".zip").toFile();
+        if (!file.exists()) return null;
+
+        final ZipFile zip = new ZipFile(file);          // bez try-with-resources
+        try {
+            final ZipEntry entry = zip.getEntry(path);
+            if (entry == null || entry.isDirectory()) {
+                zip.close();
+                return null;
+            }
+
+            final InputStream in = new FilterInputStream(zip.getInputStream(entry)) {
+                @Override
+                public void close() throws IOException {
+                    try { super.close(); } finally { zip.close(); }   // zamyka wpis i całe archiwum
+                }
+            };
+            return new StoredFileData(in, entry.getSize());
+        } catch (IOException | RuntimeException e) {
+            zip.close();                                 // błąd przed oddaniem strumienia → sprzątamy sami
+            throw e;
+        }
+    }
+
 }

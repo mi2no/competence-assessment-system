@@ -1,0 +1,29 @@
+#taskPage {
+    display: flex;
+    flex-direction: column;
+
+    align-items: baseline;
+
+    font-family: var(--plus-jakarta-sans);
+}
+
+#taskPage #dates {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+
+#taskPage #content {
+    display: inherit;
+    flex-direction: inherit;
+
+    align-items: inherit;
+
+    padding: 20px;
+}
+
+#taskPage code {
+    text-align: left;
+    white-space: pre-wrap;
+}

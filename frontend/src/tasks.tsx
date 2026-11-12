@@ -1,4 +1,5 @@
 import './tasks.css';
+import { Link } from "react-router-dom";
 import { useState, useEffect, Fragment } from 'react';
 
 type ArtifactEntry = {
@@ -62,16 +63,14 @@ export default function Tasks() {
             </ul>
             <ul id="taskList">
                 {tasks.map(task => (
-                    <div key={task.id} className="task">
-                        <h2>{task.title}</h2>
-                        <span>{task.dueDate.toDateString()}</span>
-                    </div>
+                    <Link to={`/task/${task.id}`} key={task.id} className="service">
+                        <div className="task">
+                            <h2>{task.title}</h2>
+                            <span>{task.dueDate.toDateString()}</span>
+                        </div>
+                    </Link>
                 ))}
             </ul>
-            <form>
-                <input type="file" name="files" multiple required/>
-                <input type="submit"/>
-            </form>
             <section>
                 <div>
                     <h2>Uploaded Solutions</h2>

@@ -37,6 +37,30 @@ public class TaskEndpoint {
         return Response.ok().entity(tasks).build();
     }
 
+    @GET
+    @Path("/get/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getTaskById(@PathParam("id") int id) {
+        final Task task =
+                em.createQuery("SELECT t FROM Task t WHERE t.id = :id", Task.class)
+                        .setParameter("id", id).getSingleResultOrNull();
+
+        return task == null ?
+                Response.status(Response.Status.NOT_FOUND).build() : Response.ok().entity(task).build();
+    }
+
+    @GET
+    @Path("/solution/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getTaskSolution(@PathParam("id") int id) {
+        final Artifact solution =
+                em.createQuery("SELECT a FROM Artifact a WHERE a.task.id = :id", Artifact.class)
+                        .setParameter("id", id).getSingleResultOrNull();
+
+        return solution == null ?
+                Response.status(Response.Status.NOT_FOUND).build() : Response.ok().entity(solution).build();
+    }
+
     @POST
     @Transactional
     @Path("{id}/solution/upload")
@@ -63,8 +87,11 @@ public class TaskEndpoint {
 
             final UUID storedId = storage.store(filesData);
 
-            em.persist(new ArtifactQueue(
+            /*em.persist(new ArtifactQueue(
                     LocalDate.now(), storedId, 1, ArtifactQueue.State.WAITING
+            ));*/
+            em.persist(new Artifact(
+                    0, LocalDate.now(), "", storedId, 1, em.getReference(Task.class, taskId)
             ));
         } catch (IOException e) {
             throw new RuntimeException(e);
