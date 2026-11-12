@@ -1,0 +1,65 @@
+.artifactView {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: minmax(0, 1fr);
+
+    background-color: var(--base);
+    border-radius: 10px;
+    padding: 10px;
+    gap: 10px;
+
+    max-height: 500px;
+    align-self: stretch;
+}
+
+.artifactView .files {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+    margin: 0;
+    gap: 5px;
+
+    overflow: auto;
+}
+
+.artifactView .files > div {
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+
+    gap: 10px;
+    
+    font-family: var(--google-sans-code);
+    font-size: .8em;
+
+    padding: 2px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.artifactView .files > div:hover {
+    background-color: var(--surface0);
+}
+
+.artifactView .files > div.active {
+    background-color: var(--surface0);
+}
+
+.artifactView pre {
+    border-left: 1px solid var(--overlay0);
+    margin: 0;
+
+    overflow: auto;
+
+    text-align: left;
+}
+
+.artifactView code {
+    font-family: var(--google-sans-code);
+    font-weight: 500;
+    
+    background-color: transparent;
+    color: var(--text);
+}

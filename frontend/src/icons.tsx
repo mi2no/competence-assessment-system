@@ -4,7 +4,7 @@ interface FileIconProps {
 }
 
 const icons = import.meta.glob(
-    "/src/assets/icons/latte/*.svg",
+    "/src/assets/icons/frappe/*.svg",
     {
         eager: true,
         query: "?url",
@@ -13,7 +13,7 @@ const icons = import.meta.glob(
 ) as Record<string, string>;
 
 export default function FileIcon({ extension, size = 24 }: FileIconProps) {
-    const path = `/src/assets/icons/latte/${extension.toLowerCase()}.svg`;
+    const path = `/src/assets/icons/frappe/${extension.toLowerCase()}.svg`;
     const src = icons[path];
 
     if (!src)

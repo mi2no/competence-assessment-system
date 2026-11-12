@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
+import ArtifactView from "./ArtifactView.tsx";
+
 import './TaskPage.css'
 
 type Task = {
@@ -19,12 +21,6 @@ type Artifact = {
     description : string,
     uuid : string,
     userId : number
-}
-
-type FileInfo = {
-    name : string,
-    size : number,
-    content : string
 }
 
 async function getTask(id : number) {
@@ -65,37 +61,10 @@ async function submitSolution(form : HTMLFormElement) {
     console.log(result);
 }
 
-async function getArtifactStructure(uuid : string) {
-    const response = await fetch('/api/artifact/structure?' + new URLSearchParams({
-        uuid : uuid
-    }).toString());
-
-    if (!response.ok) throw new Error(`Structure GET faildef: ${response.status}`);
-
-    const files = await response.json();
-    return files.map(f => ({
-        ...f,
-        content : getArtifactFile(uuid, f.name)
-    }) as FileInfo);
-}
-
-async function getArtifactFile(uuid : string, path : string) {
-    const response = await fetch('/api/artifact/file?' + new URLSearchParams({
-        uuid : uuid,
-        path : path
-    }).toString());
-
-    if (!response.ok) throw new Error(`Structure GET faildef: ${response.status}`);
-
-    const file : string = await response.text();
-    return file;
-}
-
 export default function TaskPage() {
     const { id } = useParams<{ id: string }>();
     const [task, setTask] = useState<Task | null>(null);
     const [solution, setSolution] = useState<Artifact | null>(null);
-    const [files, setFiles] = useState<FileInfo[] | null>(null);
 
     useEffect(() => {
         if (!id) return;
@@ -105,15 +74,6 @@ export default function TaskPage() {
         getTask(intId).then(t => setTask(t));
         getSolution(intId).then(s => setSolution(s));
     }, []);
-
-    useEffect(() => {
-        if (solution != null) {
-            console.log(solution.uuid);
-            getArtifactStructure(solution.uuid).then(
-                s => setFiles(s)
-            );
-        }
-    }, [solution])
 
     if (task == null) return <>Loading</>;
 
@@ -143,13 +103,7 @@ export default function TaskPage() {
                     (
                         <>
                         <span>Uploaded on {solution.date.toLocaleString()}</span>
-                        <span>{solution.uuid}</span>
-                        {files?.map(f => (
-                            <>
-                                <span>{f.name}</span>
-                                <pre><code>{f.content}</code></pre>
-                            </>
-                        ))}
+                        <ArtifactView uuid={solution.uuid} />
                         </>
                     )
                 }

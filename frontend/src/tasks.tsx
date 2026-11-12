@@ -2,8 +2,6 @@ import './tasks.css';
 import { Link } from "react-router-dom";
 import { useState, useEffect, Fragment } from 'react';
 
-import FileIcon from './icons.tsx';
-
 type ArtifactEntry = {
     uuid : string,
     date : string,
@@ -62,7 +60,6 @@ export default function Tasks() {
                 <button>Upcoming</button>
                 <button>Overdue</button>
                 <button>Done</button>
-                {FileIcon({extension: "cpp"})}
             </ul>
             <ul id="taskList">
                 {tasks.map(task => (
