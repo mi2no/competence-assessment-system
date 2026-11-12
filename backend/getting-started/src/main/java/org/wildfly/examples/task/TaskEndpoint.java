@@ -28,6 +28,15 @@ public class TaskEndpoint {
     @Inject
     ArtifactStorage storage;
 
+    @GET
+    @Path("/get")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getTasks() {
+        final List<Task> tasks = em.createQuery("SELECT t FROM Task t", Task.class).getResultList();
+
+        return Response.ok().entity(tasks).build();
+    }
+
     @POST
     @Transactional
     @Path("{id}/solution/upload")

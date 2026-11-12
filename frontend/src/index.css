@@ -15,6 +15,12 @@
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
 
+  /*catppuccin latte*/
+  --crust: #dce0e8;
+  --mantle: #e6e9ef;
+  --base: #eff1f5;
+  --text: #4c4f69;
+
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
   color-scheme: light dark;
@@ -43,6 +49,11 @@
     --social-bg: rgba(47, 48, 58, 0.5);
     --shadow:
       rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+
+    --crust: #232634;
+    --mantle: #292c3c;
+    --base: #303446;
+    --text: #c6d0f5;
   }
 
   #social .button-icon {
@@ -64,6 +75,9 @@
 
 body {
   margin: 0;
+
+  background-color: var(--mantle);
+  color: var(--text);
 }
 
 h1,

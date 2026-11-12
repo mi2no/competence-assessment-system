@@ -1,5 +1,5 @@
 import './tasks.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Fragment } from 'react';
 
 type ArtifactEntry = {
     uuid : string,
@@ -7,8 +7,32 @@ type ArtifactEntry = {
     state : string
 }
 
+type Task = {
+    id : number,
+    title : string,
+    description : string,
+    creationDate : Date,
+    dueDate : Date,
+    teacherId : number,
+    courseId : number
+}
+
+async function getTasks() {
+    const response = await fetch('/api/task/get');
+
+    if (!response.ok) throw new Error(`Fetch failed: ${response.status}`);
+
+    const tasks = await response.json();
+    return tasks.map(t => ({
+        ...t,
+        creationDate : new Date(t.creationDate),
+        dueDate: new Date(t.dueDate)
+    }) as Task);
+}
+
 export default function Tasks() {
     const [artifacts, setArtifacts] = useState<ArtifactEntry[]>([])
+    const [tasks, setTasks] = useState<Task[]>([]);
     
     async function getArtifactEntries() {
         const response = await fetch('/api/artifact/queue');
@@ -25,8 +49,25 @@ export default function Tasks() {
         getArtifactEntries();
     }, []);
 
+    useEffect(() => {
+        getTasks().then(arr => setTasks(arr));
+    }, []);
+
     return (
         <>
+            <ul id="statusViews">
+                <button>Upcoming</button>
+                <button>Overdue</button>
+                <button>Done</button>
+            </ul>
+            <ul id="taskList">
+                {tasks.map(task => (
+                    <div key={task.id} className="task">
+                        <h2>{task.title}</h2>
+                        <span>{task.dueDate.toDateString()}</span>
+                    </div>
+                ))}
+            </ul>
             <form>
                 <input type="file" name="files" multiple required/>
                 <input type="submit"/>
@@ -43,11 +84,11 @@ export default function Tasks() {
                         <span>Date</span>
                         <span>State</span>
                         {artifacts.map(entry => (
-                            <>
+                            <Fragment key={entry.uuid}>
                                 <span>{entry.uuid}</span>
                                 <span>{entry.date}</span>
                                 <span>{entry.state}</span>
-                            </>
+                            </Fragment>
                         ))}
                     </div>
                 </section>

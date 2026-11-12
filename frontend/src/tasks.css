@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 section > div {
     display: flex;
     flex-direction: row;
@@ -6,4 +8,47 @@ section > div {
 section .solutions div {
     display: grid;
     grid-template-columns: auto auto auto;
+}
+
+#statusViews {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    padding: 10px;
+    border-bottom: solid 1px var(--crust);
+}
+
+#statusViews button {
+    padding: 10px;
+
+    border-radius: 80px;
+    border: none;
+
+    font-family: "Roboto", sans-serif;
+}
+
+#taskList {
+    display: flex;
+    padding: 10px;
+}
+
+#taskList .task {
+    display: inline-flex;
+    flex-direction: column;
+
+    gap: 10px;
+    text-align: left;
+    padding: 20px;
+
+    background-color: var(--base);
+
+    border-radius: 10px;
+    border: solid 1px var(--crust);
+
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+#taskList .task h2 {
+    font-weight: 700;
 }

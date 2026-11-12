@@ -1,5 +1,6 @@
 package org.wildfly.examples.task;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -29,10 +30,12 @@ public class Task {
 
     @NotNull
     @Column(name = "creation_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public LocalDate creationDate;
 
     @NotNull
     @Column(name = "due_date")
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     public LocalDate dueDate;
 
     @NotNull
@@ -40,6 +43,6 @@ public class Task {
     public Integer teacherId;
 
     @NotNull
-    @Column(name = "subject_id")
-    public Integer subjectId;
+    @Column(name = "course_id")
+    public Integer courseId;
 }
