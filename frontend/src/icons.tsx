@@ -1,9 +1,13 @@
 import useColorScheme from "./useColorScheme";
+import mapping from "./assets/icons/theme.json";
 
 interface FileIconProps {
-    extension: string;
+    name: string;
     size?: number;
 }
+
+const fileExtensions = mapping.fileExtensions as Record<string, string>;
+const fileNames = mapping.fileNames as Record<string, string>;
 
 // import.meta.glob jest rozwijane statycznie przez Vite w czasie budowania,
 // więc zarówno wzorzec, jak i obiekt opcji muszą być literałami (bez zmiennych).
@@ -25,10 +29,12 @@ const flavor = {
     dark: "frappe"
 };
 
-export default function FileIcon({ extension, size = 24 }: FileIconProps) {
+export default function FileIcon({ name, size = 24 }: FileIconProps) {
     const scheme = useColorScheme();
 
-    const path = `/src/assets/icons/${flavor[scheme]}/${extension.toLowerCase()}.svg`;
+    const iconName = fileNames[name] || fileExtensions[name.slice(name.lastIndexOf(".") + 1, name.length).toLowerCase()] || mapping.file;
+
+    const path = `/src/assets/icons/${flavor[scheme]}/${iconName}.svg`;
     const src = iconSets[scheme][path];
 
     if (!src)

@@ -71,27 +71,6 @@ export default function Tasks() {
                     </Link>
                 ))}
             </ul>
-            <section>
-                <div>
-                    <h2>Uploaded Solutions</h2>
-                    <button className="refresh" onClick={getArtifactEntries}></button>
-                </div>
-                <section className="solutions">
-                    <h3>Personal</h3>
-                    <div>
-                        <span>UUID</span>
-                        <span>Date</span>
-                        <span>State</span>
-                        {artifacts.map(entry => (
-                            <Fragment key={entry.uuid}>
-                                <span>{entry.uuid}</span>
-                                <span>{entry.date}</span>
-                                <span>{entry.state}</span>
-                            </Fragment>
-                        ))}
-                    </div>
-                </section>
-            </section>
             <ul id="queue"></ul>
         </>
     )

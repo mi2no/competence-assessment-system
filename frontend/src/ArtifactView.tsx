@@ -56,7 +56,7 @@ export default function ArtifactView({ uuid } : { uuid : string }) {
                         className={active === id ? "active" : undefined}
                         onClick={() => setActive(id)}
                     >
-                        <FileIcon size={20} extension={f.name.slice(f.name.lastIndexOf(".") + 1, f.name.length)}/>
+                        <FileIcon size={20} name={f.name}/>
                         <span>{f.name}</span>
                     </div>
                 ))}
