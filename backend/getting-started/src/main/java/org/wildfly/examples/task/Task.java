@@ -4,16 +4,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "task")
@@ -31,12 +23,12 @@ public class Task {
     @NotNull
     @Column(name = "creation_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    public LocalDate creationDate;
+    public LocalDateTime creationDate;
 
     @NotNull
     @Column(name = "due_date")
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    public LocalDate dueDate;
+    public LocalDateTime dueDate;
 
     @NotNull
     @Column(name = "teacher_id")

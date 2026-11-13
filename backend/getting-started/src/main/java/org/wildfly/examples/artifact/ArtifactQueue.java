@@ -1,27 +1,24 @@
 package org.wildfly.examples.artifact;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
-
-import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Table(name = "artifact_queue")
 public class ArtifactQueue {
     @Id
-    @JdbcTypeCode(SqlTypes.BINARY)
-    @Column(nullable = false, unique = true, length = 16)
-    public UUID uuid;
+    public int artifact_id;
 
-    public LocalDate date;
-
-    @Column(name = "user_id")
-    public int userId;
+    @OneToOne(fetch = FetchType.LAZY, optional = false)
+    @MapsId
+    @JoinColumn(name = "artifact_id")
+    @JsonIgnore
+    public Artifact artifact;
 
     public enum State {
-        WAITING, IN_PROGRESS
+        WAITING, IN_PROGRESS, FAILED
     }
 
     @JdbcTypeCode(SqlTypes.ENUM)
@@ -30,10 +27,8 @@ public class ArtifactQueue {
 
     public ArtifactQueue() {}
 
-    public ArtifactQueue(LocalDate date, UUID uuid, int userId, State state) {
-        this.date = date;
-        this.uuid = uuid;
-        this.userId = userId;
+    public ArtifactQueue(Artifact artifact, State state) {
+        this.artifact = artifact;
         this.state = state;
     }
 }

@@ -61,10 +61,20 @@ async function submitSolution(form : HTMLFormElement) {
     console.log(result);
 }
 
+async function getArtifactState(id : number) {
+    const response = await fetch(`/api/artifact/${id}/state`);
+
+    if (!response.ok) return null;
+
+    const state : string = await response.json();
+    return state;
+}
+
 export default function TaskPage() {
     const { id } = useParams<{ id: string }>();
     const [task, setTask] = useState<Task | null>(null);
     const [solution, setSolution] = useState<Artifact | null>(null);
+    const [artifactState, setArtifactState] = useState<string | null>(null);
 
     useEffect(() => {
         if (!id) return;
@@ -74,6 +84,11 @@ export default function TaskPage() {
         getTask(intId).then(t => setTask(t));
         getSolution(intId).then(s => setSolution(s));
     }, []);
+
+    useEffect(() => {
+        if (solution != null)
+            getArtifactState(solution.id).then(s => setArtifactState(s));
+    }, [solution]);
 
     if (task == null) return <>Loading</>;
 
@@ -104,6 +119,7 @@ export default function TaskPage() {
                         <>
                         <span>Uploaded on {solution.date.toLocaleString()}</span>
                         <ArtifactView uuid={solution.uuid} />
+                        {artifactState === null ? <></> : <span>Report {artifactState}</span>}
                         </>
                     )
                 }

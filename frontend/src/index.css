@@ -24,6 +24,7 @@
   --text: #4c4f69;
   --overlay0: #9ca0b0;
   --surface0: #ccd0da;
+  --surface1: #bcc0cc;
 
 
   --plus-jakarta-sans: "Plus Jakarta Sans", sans-serif;
@@ -64,6 +65,7 @@
     --text: #c6d0f5;
     --overlay0: #737994;
     --surface0: #414559;
+    --surface1: #51576d;
 
   }
 

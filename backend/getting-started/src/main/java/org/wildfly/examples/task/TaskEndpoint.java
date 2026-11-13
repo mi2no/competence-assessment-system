@@ -14,7 +14,7 @@ import org.wildfly.examples.artifact.ArtifactQueue;
 import org.wildfly.examples.artifact.ArtifactStorage;
 
 import java.io.IOException;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -87,12 +87,12 @@ public class TaskEndpoint {
 
             final UUID storedId = storage.store(filesData);
 
-            /*em.persist(new ArtifactQueue(
-                    LocalDate.now(), storedId, 1, ArtifactQueue.State.WAITING
-            ));*/
-            em.persist(new Artifact(
-                    0, LocalDate.now(), "", storedId, 1, em.getReference(Task.class, taskId)
-            ));
+            final Artifact artifact = new Artifact(
+                    0, LocalDateTime.now(), "", storedId, 1, em.getReference(Task.class, taskId)
+            );
+
+            em.persist(artifact);
+            em.persist(new ArtifactQueue(artifact, ArtifactQueue.State.WAITING));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

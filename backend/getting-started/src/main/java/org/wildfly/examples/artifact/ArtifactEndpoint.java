@@ -28,15 +28,20 @@ public class ArtifactEndpoint {
     ArtifactStorage storage;
 
     @GET
-    @Path("/queue")
+    @Path("/{id}/state")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getQueue() {
-        final List<ArtifactQueue> queue =
-                em.createQuery("SELECT q FROM ArtifactQueue q WHERE q.userId = :id", ArtifactQueue.class)
-                        .setParameter("id", 1).getResultList();
+    public Response getState(@PathParam("id") int id) {
+        final ArtifactQueue entry = em.find(ArtifactQueue.class, id);
 
-        return Response.ok().entity(queue).build();
+        return entry == null ?
+                Response.status(Response.Status.NOT_FOUND).build()
+                : Response.ok().entity(entry.state).build();
     }
+
+    /*
+    TODO: replace uuid's with just id's, since using uuid requires to check if the artifact belongs to the user anyway.
+    Just use id and em.find(id)
+     */
 
     @GET
     @Path("/structure")

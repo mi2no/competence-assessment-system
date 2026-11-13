@@ -7,7 +7,7 @@ import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
 import org.wildfly.examples.task.Task;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -18,7 +18,7 @@ public class Artifact {
     public int id;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
-    public LocalDate date;
+    public LocalDateTime date;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING)
     public String description;
@@ -35,9 +35,14 @@ public class Artifact {
     @JoinColumn(name = "task_id")
     public Task task;
 
+    /*@OneToOne(mappedBy = "artifact", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore
+    public ArtifactQueue queue;   // null = artefakt nie jest w kolejce*/
+
     public Artifact() {}
 
-    public Artifact(int id, LocalDate date, String description, UUID uuid, int userId, Task task) {
+    public Artifact(int id, LocalDateTime date, String description, UUID uuid, int userId, Task task) {
         this.id = id;
         this.date = date;
         this.description = description;
