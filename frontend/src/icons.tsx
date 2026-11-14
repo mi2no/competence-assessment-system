@@ -24,7 +24,7 @@ const iconSets = {
     }) as Record<string, string>
 };
 
-const flavor = {
+export const flavor = {
     light: "latte",
     dark: "frappe"
 };

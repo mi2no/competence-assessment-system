@@ -62,11 +62,10 @@
 }
 
 .artifactView pre {
-    margin: 0;
-
-    text-align: left;
-
     display: block;
+
+    margin: 0;
+    text-align: left;
 }
 
 .artifactView code {

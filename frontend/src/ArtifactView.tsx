@@ -1,9 +1,10 @@
 import { useEffect, useState, use, Suspense } from "react";
 import { codeToHtml, bundledLanguages } from "shiki";
 
-import FileIcon from "./icons";
+import FileIcon, { flavor } from "./icons";
 
 import './ArtifactView.css';
+import useColorScheme from "./useColorScheme";
 
 export type FileInfo = {
     name : string,
@@ -18,9 +19,7 @@ async function getArtifactStructure(uuid : string) {
     if (!response.ok) throw new Error(`Structure GET faildef: ${response.status}`);
 
     const files = await response.json();
-    return files.map(f => ({
-        ...f
-    }) as FileInfo);
+    return files.map((f: FileInfo) => f);
 }
 
 async function getArtifactFileContent(uuid : string, path : string) {
@@ -56,13 +55,14 @@ function loadFileContent(uuid : string, path : string) {
 
 function CodeView({ name, code } : { name : string, code : string }) {
     const [html, setHtml] = useState("");
+    const scheme = useColorScheme();
 
     useEffect(() => {
         codeToHtml(code, { 
             lang : getLangFromFileName(name), 
-            theme : "catppuccin-frappe"
+            theme : `catppuccin-${flavor[scheme]}`
         }).then(setHtml);
-    }, [name, code]);
+    }, [name, code, scheme]);
 
     return (
         <div className="codeView" dangerouslySetInnerHTML={{__html : html}}/>
