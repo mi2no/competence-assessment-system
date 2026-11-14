@@ -66,6 +66,8 @@
 
     margin: 0;
     text-align: left;
+
+    background-color: transparent !important;
 }
 
 .artifactView code {
