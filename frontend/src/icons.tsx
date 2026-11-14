@@ -31,8 +31,9 @@ const flavor = {
 
 export default function FileIcon({ name, size = 24 }: FileIconProps) {
     const scheme = useColorScheme();
+    const lower = name.toLowerCase();
 
-    const iconName = fileNames[name] || fileExtensions[name.slice(name.lastIndexOf(".") + 1, name.length).toLowerCase()] || mapping.file;
+    const iconName = fileNames[lower] || fileExtensions[lower.split(".").pop() ?? ""] || mapping.file;
 
     const path = `/src/assets/icons/${flavor[scheme]}/${iconName}.svg`;
     const src = iconSets[scheme][path];

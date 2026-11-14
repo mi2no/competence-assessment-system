@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, use, Suspense } from "react";
+import { codeToHtml, bundledLanguages } from "shiki";
 
 import FileIcon from "./icons";
 
@@ -6,8 +7,7 @@ import './ArtifactView.css';
 
 export type FileInfo = {
     name : string,
-    size : number,
-    content : string
+    size : number
 }
 
 async function getArtifactStructure(uuid : string) {
@@ -19,8 +19,7 @@ async function getArtifactStructure(uuid : string) {
 
     const files = await response.json();
     return files.map(f => ({
-        ...f,
-        content : getArtifactFileContent(uuid, f.name)
+        ...f
     }) as FileInfo);
 }
 
@@ -35,6 +34,47 @@ async function getArtifactFileContent(uuid : string, path : string) {
     const file : string = await response.text();
     return file;
 }
+
+function getLangFromFileName(name : string) {
+    const extension = name.split(".").pop()?.toLowerCase() ?? "";
+    return extension in bundledLanguages ? extension : "text";
+}
+
+const fileContentCache : Record<string, Promise<string>> = {};
+
+function loadFileContent(uuid : string, path : string) {
+    let content = fileContentCache[path];
+
+    if (!content) {
+        content = getArtifactFileContent(uuid, path);
+        content.catch(() => delete fileContentCache[path]);
+        fileContentCache[path] = content;
+    }
+
+    return content;
+}
+
+function CodeView({ name, code } : { name : string, code : string }) {
+    const [html, setHtml] = useState("");
+
+    useEffect(() => {
+        codeToHtml(code, { 
+            lang : getLangFromFileName(name), 
+            theme : "catppuccin-frappe"
+        }).then(setHtml);
+    }, [name, code]);
+
+    return (
+        <div className="codeView" dangerouslySetInnerHTML={{__html : html}}/>
+    )
+}
+
+function FileContent({ uuid, path } : { uuid : string, path : string }) {
+    const content = use(loadFileContent(uuid, path));
+    return <CodeView name={path} code={content}/>
+}
+
+
 
 export default function ArtifactView({ uuid } : { uuid : string }) {
     const [files, setFiles] = useState<FileInfo[]>([]);
@@ -61,9 +101,11 @@ export default function ArtifactView({ uuid } : { uuid : string }) {
                     </div>
                 ))}
             </ul>
-            <pre><code>
-                {active === null ? <></> : <>{files[active].content}</>}
-            </code></pre>
+            {active !== null && (
+                <Suspense fallback={<div className="codeView loading">Loading...</div>}>
+                    <FileContent uuid={uuid} path={files[active].name}/>
+                </Suspense>
+            )}
         </div>
     )
 }

@@ -10,7 +10,7 @@
     padding: 10px;
     gap: 10px;
 
-    max-height: 500px;
+    height: 500px;
     align-self: stretch;
 }
 
@@ -49,20 +49,32 @@
     background-color: var(--surface0);
 }
 
-.artifactView pre {
+.artifactView .codeView {
     border-left: 1px solid var(--overlay0);
     margin: 0;
-
+    
     overflow: auto;
     scrollbar-color: var(--overlay0) transparent;
+}
+
+.artifactView .codeView.loading {
+    align-content: center;
+}
+
+.artifactView pre {
+    margin: 0;
 
     text-align: left;
+
+    display: block;
 }
 
 .artifactView code {
     font-family: var(--google-sans-code);
-    font-weight: 500;
+    font-weight: 450;
     
     background-color: transparent;
     color: var(--text);
+    
+    display: block;
 }
