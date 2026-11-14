@@ -1,5 +1,6 @@
 package org.wildfly.examples.artifact;
 
+import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.core.StreamingOutput;
@@ -20,19 +21,28 @@ public class ArtifactStorage {
     @ConfigProperty(name = "artifact.dir")
     String dir;
 
+    Path root;
+
     public record FileData(
             String name,
             InputStream stream
     ) {}
 
+    @PostConstruct
+    void init() {
+        root = Path.of(dir);
+        try {
+            Files.createDirectories(root);
+        } catch (IOException e) {
+            throw new UncheckedIOException("Cannot create artifact dir: " + root, e);
+        }
+    }
+
     public UUID store(List<FileData> files) throws IOException {
         final UUID id = UUID.randomUUID();
         final String name = id + ".zip";
-        final Path path = Path.of(dir);
 
-        Files.createDirectories(path);
-
-        try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(path.resolve(name)))) {
+        try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(root.resolve(name)))) {
 
             for (final var entry : files)
                 try (final InputStream in = entry.stream()) {
@@ -53,7 +63,7 @@ public class ArtifactStorage {
     ) {}
 
     public List<FileInfo> getStructure(UUID artifactId) {
-        final File file = Path.of(dir).resolve(artifactId + ".zip").toFile();
+        final File file = root.resolve(artifactId + ".zip").toFile();
 
         if (!file.exists()) return null;
 
@@ -82,7 +92,7 @@ public class ArtifactStorage {
     ) {}
 
     public StoredFileData getFile(UUID artifactId, String path) throws IOException {
-        final File file = Path.of(dir).resolve(artifactId + ".zip").toFile();
+        final File file = root.resolve(artifactId + ".zip").toFile();
         if (!file.exists()) return null;
 
         final ZipFile zip = new ZipFile(file);          // bez try-with-resources
