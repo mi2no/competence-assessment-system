@@ -18,7 +18,7 @@ public class ArtifactQueue {
     public Artifact artifact;
 
     public enum State {
-        WAITING, IN_PROGRESS, FAILED
+        WAITING, IN_PROGRESS, FAILED, DONE
     }
 
     @JdbcTypeCode(SqlTypes.ENUM)

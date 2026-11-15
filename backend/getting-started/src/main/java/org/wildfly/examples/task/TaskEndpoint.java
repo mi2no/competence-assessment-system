@@ -1,5 +1,6 @@
 package org.wildfly.examples.task;
 
+import jakarta.enterprise.event.Event;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -27,6 +28,13 @@ public class TaskEndpoint {
 
     @Inject
     ArtifactStorage storage;
+
+    public record QueuedArtifact(
+            UUID uuid
+    ) {}
+
+    @Inject
+    Event<QueuedArtifact> queued;
 
     @GET
     @Path("/get")
@@ -92,7 +100,9 @@ public class TaskEndpoint {
             );
 
             em.persist(artifact);
+
             em.persist(new ArtifactQueue(artifact, ArtifactQueue.State.WAITING));
+            queued.fire(new QueuedArtifact(storedId));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
