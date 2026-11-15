@@ -35,11 +35,6 @@ public class Artifact {
     @JoinColumn(name = "task_id")
     public Task task;
 
-    /*@OneToOne(mappedBy = "artifact", fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    public ArtifactQueue queue;   // null = artefakt nie jest w kolejce*/
-
     public Artifact() {}
 
     public Artifact(int id, LocalDateTime date, String description, UUID uuid, int userId, Task task) {
@@ -49,5 +44,29 @@ public class Artifact {
         this.uuid = uuid;
         this.userId = userId;
         this.task = task;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public UUID getUuid() {
+        return uuid;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public Task getTask() {
+        return task;
     }
 }
