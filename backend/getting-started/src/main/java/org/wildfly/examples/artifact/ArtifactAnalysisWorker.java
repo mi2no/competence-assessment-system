@@ -8,6 +8,8 @@ import jakarta.enterprise.context.Initialized;
 import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.event.TransactionPhase;
 import jakarta.inject.Inject;
+import org.hibernate.Hibernate;
+import org.wildfly.examples.competence.CompetenceRepository;
 import org.wildfly.examples.task.Task;
 import org.wildfly.examples.task.TaskEndpoint;
 
@@ -19,6 +21,9 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class ArtifactAnalysisWorker {
     @Inject
     ArtifactQueueRepository repo;
+
+    @Inject
+    CompetenceRepository competenceRepo;
 
     @Inject
     ArtifactAnalyzer analyzer;
@@ -58,6 +63,7 @@ public class ArtifactAnalysisWorker {
                         analyze(item);
                         repo.finish(item.id);
                     } catch (Exception ex) {
+                        ex.printStackTrace();
                         repo.fail(item.id);
                     }
                 }
@@ -76,32 +82,29 @@ public class ArtifactAnalysisWorker {
         final Task task = item.getTask();
         final List<ArtifactStorage.FileInfo> files = artifactStorage.getStructure(item.uuid);
 
-        final StringBuilder prompt = new StringBuilder("""
-        Extract the competencies from the provided assignment solution.
-        
-        The assignment description is:
-        
-        """ + task.description + """
-        
-        The solutions consist of these files:
-        
-        
-        """);
+        final StringBuilder catalogue = new StringBuilder();
+        for (var c : competenceRepo.getAll()) catalogue.append(c.name).append(":").append(c.description).append('\n');
 
-        for (var file : files)
-            prompt.append(file.name()).append('\n');
+        final StringBuilder structure = new StringBuilder();
+        for (var file : files) structure.append(file.name()).append('\n');
 
-        prompt.append("\nUse the readFile tool to get file contents.");
+        final String prompt = ArtifactAnalyzer.USER_PROMPT.formatted(catalogue.toString(), task.getDescription(), structure.toString());
 
-        var result = analyzer.analyze(prompt.toString(), InvocationParameters.from(Map.of("uuid", item.uuid)));
+        var result = analyzer.analyze(prompt, InvocationParameters.from(Map.of("uuid", item.uuid)));
 
-        System.out.println("MATCHED:");
-        for (var matched : result.matchedCompetencies())
-            System.out.println("[" + matched.name() + ", " + matched.justification() + "]");
+        if (result == null) System.out.println("Result is null");
+        else {
+            System.out.println("MATCHED:");
+            if (result.matchedCompetencies() != null) {
+                for (var matched : result.matchedCompetencies())
+                    System.out.println("[" + matched.name() + ", " + matched.justification() + "]");
+            } else System.out.println("null");
 
-
-        System.out.println("UNMATCHED:");
-        for (var unmatched : result.unmatchedCompetencies())
-            System.out.println("[" + unmatched.name() + ", " + unmatched.justification() + "]");
+            System.out.println("UNMATCHED:");
+            if (result.unmatchedCompetencies() != null) {
+                for (var unmatched : result.unmatchedCompetencies())
+                    System.out.println("[" + unmatched.name() + ", " + unmatched.justification() + "]");
+            } else System.out.println("null");
+        }
     }
 }

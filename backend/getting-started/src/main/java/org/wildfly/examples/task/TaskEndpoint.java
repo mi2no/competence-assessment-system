@@ -1,5 +1,6 @@
 package org.wildfly.examples.task;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.enterprise.event.Event;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
@@ -57,6 +58,33 @@ public class TaskEndpoint {
                 Response.status(Response.Status.NOT_FOUND).build() : Response.ok().entity(task).build();
     }
 
+    public record CreateTaskDTO (
+            String title,
+            String description,
+            @JsonFormat(shape = JsonFormat.Shape.STRING)
+            LocalDateTime active,
+            @JsonFormat(shape = JsonFormat.Shape.STRING)
+            LocalDateTime due,
+            int teacherId,
+            int courseId
+    ) {}
+
+    @POST
+    @Transactional
+    @Path("/create")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response createTask(CreateTaskDTO createTask) {
+        if (createTask.active.isBefore(LocalDateTime.now())) return Response.status(Response.Status.BAD_REQUEST).build();
+
+        final Task task = new Task(
+                createTask.title, createTask.description, createTask.active,
+                createTask.due, createTask.teacherId, createTask.courseId
+        );
+
+        em.persist(task);
+        return Response.ok().build();
+    }
+
     @GET
     @Path("/solution/{id}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -74,12 +102,13 @@ public class TaskEndpoint {
     @Path("{id}/solution/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response uploadSolution(@PathParam("id") int taskId, MultipartFormDataInput input) {
-        /*{ // Check if task of given id exists
+        { // Check if task of given id exists
             final Integer id = em.createQuery("SELECT t.id FROM Task t WHERE t.id = :id", Integer.class)
                     .setParameter("id", taskId).getSingleResultOrNull();
 
             if (id == null) return Response.status(Response.Status.NOT_FOUND).build();
-        }*/
+        }
+        // TODO check if user can access this task
 
         final List<InputPart> files = input.getFormDataMap().get("files");
 

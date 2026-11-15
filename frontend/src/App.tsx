@@ -3,6 +3,7 @@ import './App.css'
 
 import Tasks from './tasks.tsx'
 import TaskPage from "./TaskPage.tsx";
+import NewAssignmentPage from "./NewAssignmentPage.tsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Tasks />} />
           <Route path="/task/:id" element={<TaskPage />} />
+          <Route path="/create" element={<NewAssignmentPage />} />
         </Routes>
       </main>
     </Router>

@@ -1,12 +1,6 @@
 import './tasks.css';
 import { Link } from "react-router-dom";
-import { useState, useEffect, Fragment } from 'react';
-
-type ArtifactEntry = {
-    uuid : string,
-    date : string,
-    state : string
-}
+import { useState, useEffect } from 'react';
 
 type Task = {
     id : number,
@@ -32,24 +26,8 @@ async function getTasks() {
 }
 
 export default function Tasks() {
-    const [artifacts, setArtifacts] = useState<ArtifactEntry[]>([])
     const [tasks, setTasks] = useState<Task[]>([]);
     
-    async function getArtifactEntries() {
-        const response = await fetch('/api/artifact/queue');
-
-        if (!response.ok) {
-            throw new Error(`Fetch failed: ${response.status}`);
-        }
-
-        const json: ArtifactEntry[] = await response.json();
-        setArtifacts(json);
-    }
-    
-    useEffect(() => {
-        getArtifactEntries();
-    }, []);
-
     useEffect(() => {
         getTasks().then(arr => setTasks(arr));
     }, []);
@@ -61,6 +39,9 @@ export default function Tasks() {
                 <button>Overdue</button>
                 <button>Done</button>
             </ul>
+            <Link to={"/create"}>
+                <span>New assignment</span>
+            </Link>
             <ul id="taskList">
                 {tasks.map(task => (
                     <Link to={`/task/${task.id}`} key={task.id} className="service">

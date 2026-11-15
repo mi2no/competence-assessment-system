@@ -5,7 +5,7 @@ import ArtifactView from "./ArtifactView.tsx";
 
 import './TaskPage.css'
 
-type Task = {
+export type Task = {
     id : number,
     title : string,
     description : string,
@@ -44,11 +44,10 @@ async function getSolution(taskId : number) {
     } as Artifact));
 }
 
-async function submitSolution(form : HTMLFormElement) {
+async function submitSolution(form : HTMLFormElement, taskId : number) {
     const data = new FormData(form);
-    const id = 1;
 
-    const response = await fetch(`/api/task/${id}/solution/upload`, {
+    const response = await fetch(`/api/task/${taskId}/solution/upload`, {
         method: "POST",
         body: data
     });
@@ -108,7 +107,7 @@ export default function TaskPage() {
                     (
                         <form onSubmit={d => {
                             d.preventDefault();
-                            submitSolution(d.target);
+                            submitSolution(d.target, id);
                         }}>
                             <input type="file" name="files" multiple required/>
                             <input type="submit"/>

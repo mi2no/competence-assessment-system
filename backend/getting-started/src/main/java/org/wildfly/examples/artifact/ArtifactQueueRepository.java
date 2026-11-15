@@ -6,6 +6,7 @@ import jakarta.persistence.LockModeType;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.NotFoundException;
+import org.hibernate.Hibernate;
 
 import java.util.List;
 
@@ -17,9 +18,10 @@ public class ArtifactQueueRepository {
 
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public void resetInProgress() {          // sprzątanie po awarii/restarcie
-        em.createQuery("UPDATE ArtifactQueue q SET q.state = :w WHERE q.state = :p")
+        em.createQuery("UPDATE ArtifactQueue q SET q.state = :w WHERE q.state = :p OR q.state = :f")
                 .setParameter("w", ArtifactQueue.State.WAITING)
                 .setParameter("p", ArtifactQueue.State.IN_PROGRESS)
+                .setParameter("f", ArtifactQueue.State.FAILED)
                 .executeUpdate();
     }
 
@@ -36,6 +38,8 @@ public class ArtifactQueueRepository {
 
         final ArtifactQueue item = list.get(0);
         item.state = ArtifactQueue.State.IN_PROGRESS;
+
+        Hibernate.initialize(item.artifact.getTask()); // Initialize task proxy
 
         return item.artifact;
     }
