@@ -70,15 +70,17 @@ async function getArtifactState(id : number) {
 }
 
 export default function TaskPage() {
-    const { id } = useParams<{ id: string }>();
+    const { id } = useParams<{ id : string }>();
     const [task, setTask] = useState<Task | null>(null);
     const [solution, setSolution] = useState<Artifact | null>(null);
     const [artifactState, setArtifactState] = useState<string | null>(null);
 
+    let intId = 0;
+
     useEffect(() => {
         if (!id) return;
         
-        const intId = parseInt(id);
+        intId = parseInt(id);
         
         getTask(intId).then(t => setTask(t));
         getSolution(intId).then(s => setSolution(s));
@@ -101,13 +103,21 @@ export default function TaskPage() {
             </div>
             <div id="content">
                 <div id="description">{task.description}</div>
-                <h3>Solution</h3>
+                <div className="sectionName">
+                    <h3>Solution</h3>
+                    {solution !== null && 
+                        <>
+                        &middot;
+                        <span>uploaded on {solution.date.toLocaleString()}</span>
+                        </>
+                    }
+                </div>
                 {
                     solution == null ? 
                     (
                         <form onSubmit={d => {
                             d.preventDefault();
-                            submitSolution(d.target, id);
+                            submitSolution(d.target, intId);
                         }}>
                             <input type="file" name="files" multiple required/>
                             <input type="submit"/>
@@ -116,7 +126,6 @@ export default function TaskPage() {
                     :
                     (
                         <>
-                        <span>Uploaded on {solution.date.toLocaleString()}</span>
                         <ArtifactView uuid={solution.uuid} />
                         {artifactState === null ? <></> : <span>Report {artifactState}</span>}
                         </>
