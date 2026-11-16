@@ -94,44 +94,56 @@ export default function TaskPage() {
     if (task == null) return <>Loading</>;
 
     return (
-        <section id="taskPage">
-            <h1>{task.title}</h1>
-            <div id="dates">
-                <span>{task.creationDate.toLocaleString()}</span>
-                &middot;
-                <span>{task.dueDate.toLocaleString()}</span>
-            </div>
-            <div id="content">
-                <div id="description">{task.description}</div>
+        <div id="assignmentPage">
+            <section id="taskPage">
+                <h1>{task.title}</h1>
+                <div id="dates">
+                    <span>{task.creationDate.toLocaleString()}</span>
+                    &middot;
+                    <span>{task.dueDate.toLocaleString()}</span>
+                </div>
+                <div id="content">
+                    <div id="description">{task.description}</div>
+                    <div className="sectionName">
+                        <h3>Solution</h3>
+                        {solution !== null && 
+                            <>
+                            &middot;
+                            <span>uploaded on {solution.date.toLocaleString()}</span>
+                            </>
+                        }
+                    </div>
+                    {
+                        solution == null ? 
+                        (
+                            <form onSubmit={d => {
+                                d.preventDefault();
+                                submitSolution(d.target, intId);
+                            }}>
+                                <input type="file" name="files" multiple required/>
+                                <input type="submit"/>
+                            </form>
+                        )
+                        :
+                        (
+                            <>
+                            <ArtifactView uuid={solution.uuid} />
+                            </>
+                        )
+                    }
+                </div>
+            </section>
+            <section>
                 <div className="sectionName">
-                    <h3>Solution</h3>
-                    {solution !== null && 
+                    <h2>Analysis</h2>
+                    {artifactState !== null && 
                         <>
                         &middot;
-                        <span>uploaded on {solution.date.toLocaleString()}</span>
+                        <span>{artifactState}</span>
                         </>
                     }
                 </div>
-                {
-                    solution == null ? 
-                    (
-                        <form onSubmit={d => {
-                            d.preventDefault();
-                            submitSolution(d.target, intId);
-                        }}>
-                            <input type="file" name="files" multiple required/>
-                            <input type="submit"/>
-                        </form>
-                    )
-                    :
-                    (
-                        <>
-                        <ArtifactView uuid={solution.uuid} />
-                        {artifactState === null ? <></> : <span>Report {artifactState}</span>}
-                        </>
-                    )
-                }
-            </div>
-        </section>
+            </section>
+        </div>
     )
 }
