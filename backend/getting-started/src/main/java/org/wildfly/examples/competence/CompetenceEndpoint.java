@@ -8,6 +8,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import org.wildfly.examples.task.Task;
 
 import java.util.List;
 import java.util.logging.Level;
@@ -141,4 +142,22 @@ public class CompetenceEndpoint {
             throw new RuntimeException(e);
         }
     }
+
+    @Inject
+    CompetenceIndexer index;
+
+    @GET
+    @Path("/match")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response matchTask(@QueryParam("taskId") int taskId, @QueryParam("k") @DefaultValue("20") int k) {
+        final Task task = em.find(Task.class, taskId);
+        if (task == null) return Response.status(Response.Status.NOT_FOUND).build();
+
+        try {
+            return Response.ok(index.search(task.getDescription(), k)).build();
+        } catch (IllegalStateException e) {
+            return Response.status(Response.Status.SERVICE_UNAVAILABLE).entity(e.getMessage()).build();
+        }
+    }
+
 }
