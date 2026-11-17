@@ -188,6 +188,13 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-multipart-provider</artifactId>
+            <!-- provided: WildFly ships RESTEasy and exposes this module to JAX-RS deployments -->
+            <scope>provided</scope>
+        </dependency>
+
         <!--See https://issues.redhat.com/browse/WFLY-19779 and https://github.com/wildfly/quickstart/pull/957/
             httpclient needs commons-logging yet the server uses this instead,
             to be fully compatible on apps we need to add this dependency whenever commons-logging is needed,
@@ -205,6 +212,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- Hibernate-specific annotations (e.g. @JdbcTypeCode); provided by WildFly's JPA subsystem -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <dependency>
             <groupId>jakarta.transaction</groupId>
             <artifactId>jakarta.transaction-api</artifactId>
@@ -214,6 +228,18 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.json.bind</groupId>
+            <artifactId>jakarta.json.bind-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>jakarta.enterprise.concurrent</groupId>
+            <artifactId>jakarta.enterprise.concurrent-api</artifactId>
             <scope>provided</scope>
         </dependency>
 
@@ -257,13 +283,6 @@
         <dependency>
             <groupId>org.eclipse.microprofile.fault-tolerance</groupId>
             <artifactId>microprofile-fault-tolerance-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
-
-
-        <dependency>
-            <groupId>jakarta.json.bind</groupId>
-            <artifactId>jakarta.json.bind-api</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

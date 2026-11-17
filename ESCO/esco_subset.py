@@ -14,9 +14,9 @@ def load(name, lang) -> pd.DataFrame:
 
 output = "IT_subset"
 
-def save(frame : pd.DataFrame, name):
+def save(frame : pd.DataFrame, name, index = False):
     print(name, frame.shape[0])
-    frame.to_csv(output + "/" + name + ".csv", index = False)
+    frame.to_csv(output + "/" + name + ".csv", index = index)
 
 
 def get_ISCO_groups_subset() -> pd.DataFrame:
@@ -91,4 +91,4 @@ save(skills_hierarchy, "skillsHierarchy")
 
 
 
-save(skills_subset[["conceptUri", "skillType", "preferredLabel", "description"]], "competence")
+save(skills_subset[["conceptUri", "skillType", "preferredLabel", "description"]], "competence", True)

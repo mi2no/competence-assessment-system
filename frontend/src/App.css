@@ -1,0 +1,23 @@
+#root {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 100vh;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+
+  padding: 10px;
+  gap: 20px;
+}
+
+nav img {
+  aspect-ratio: 1;
+  width: 30px;
+}
+
+main {
+  padding: 10px;
+  overflow: auto;
+}

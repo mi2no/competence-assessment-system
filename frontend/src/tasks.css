@@ -1,0 +1,52 @@
+section > div {
+    display: flex;
+    flex-direction: row;
+}
+
+section .solutions div {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+#statusViews {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    padding: 10px;
+    border-bottom: solid 1px var(--crust);
+}
+
+#statusViews button {
+    padding: 10px;
+
+    border-radius: 80px;
+    border: none;
+
+    font-family: "Roboto", sans-serif;
+}
+
+#taskList {
+    display: flex;
+    padding: 10px;
+}
+
+#taskList .task {
+    display: inline-flex;
+    flex-direction: column;
+
+    gap: 10px;
+    text-align: left;
+    padding: 20px;
+
+    background-color: var(--base);
+
+    border-radius: 10px;
+    border: solid 1px var(--crust);
+
+    font-family: var(--plus-jakarta-sans);
+}
+
+#taskList .task h2 {
+    font-weight: 700;
+}

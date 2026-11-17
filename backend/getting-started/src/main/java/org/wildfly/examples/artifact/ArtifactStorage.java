@@ -1,0 +1,119 @@
+package org.wildfly.examples.artifact;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.core.StreamingOutput;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
+import java.util.zip.ZipOutputStream;
+
+@ApplicationScoped
+public class ArtifactStorage {
+
+    @Inject
+    @ConfigProperty(name = "artifact.dir")
+    String dir;
+
+    Path root;
+
+    public record FileData(
+            String name,
+            InputStream stream
+    ) {}
+
+    @PostConstruct
+    void init() {
+        root = Path.of(dir);
+        try {
+            Files.createDirectories(root);
+        } catch (IOException e) {
+            throw new UncheckedIOException("Cannot create artifact dir: " + root, e);
+        }
+    }
+
+    public UUID store(List<FileData> files) throws IOException {
+        final UUID id = UUID.randomUUID();
+        final String name = id + ".zip";
+
+        try (ZipOutputStream zip = new ZipOutputStream(Files.newOutputStream(root.resolve(name)))) {
+
+            for (final var entry : files)
+                try (final InputStream in = entry.stream()) {
+                    zip.putNextEntry(new ZipEntry(entry.name()));
+
+                    in.transferTo(zip);
+
+                    zip.closeEntry();
+                }
+        }
+
+        return id;
+    }
+
+    public record FileInfo (
+            String name,
+            long size
+    ) {}
+
+    public List<FileInfo> getStructure(UUID artifactId) {
+        final File file = root.resolve(artifactId + ".zip").toFile();
+
+        if (!file.exists()) return null;
+
+        try (final ZipFile zip = new ZipFile(file)) {
+            final List<FileInfo> result = new ArrayList<>();
+            final Enumeration<? extends  ZipEntry> en = zip.entries();
+
+            while (en.hasMoreElements()) {
+                final var entry = en.nextElement();
+
+                result.add(new FileInfo(entry.getName(), entry.getSize()));
+            }
+
+            return result;
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public record StoredFileData (
+            InputStream stream,
+            long size
+    ) {}
+
+    public StoredFileData getFile(UUID artifactId, String path) throws IOException {
+        final File file = root.resolve(artifactId + ".zip").toFile();
+        if (!file.exists()) return null;
+
+        final ZipFile zip = new ZipFile(file);          // bez try-with-resources
+        try {
+            final ZipEntry entry = zip.getEntry(path);
+            if (entry == null || entry.isDirectory()) {
+                zip.close();
+                return null;
+            }
+
+            final InputStream in = new FilterInputStream(zip.getInputStream(entry)) {
+                @Override
+                public void close() throws IOException {
+                    try { super.close(); } finally { zip.close(); }   // zamyka wpis i całe archiwum
+                }
+            };
+            return new StoredFileData(in, entry.getSize());
+        } catch (IOException | RuntimeException e) {
+            zip.close();                                 // błąd przed oddaniem strumienia → sprzątamy sami
+            throw e;
+        }
+    }
+
+}
