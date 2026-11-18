@@ -71,27 +71,31 @@ async function getArtifactState(id : number) {
 
 export default function TaskPage() {
     const { id } = useParams<{ id : string }>();
+    const intId = id ? parseInt(id) : 0;
     const [task, setTask] = useState<Task | null>(null);
+    const [uploaded, setUploaded] = useState<boolean>(false);
     const [solution, setSolution] = useState<Artifact | null>(null);
     const [artifactState, setArtifactState] = useState<string | null>(null);
 
-    let intId = 0;
-
     useEffect(() => {
         if (!id) return;
-        
-        intId = parseInt(id);
         
         getTask(intId).then(t => setTask(t));
         getSolution(intId).then(s => setSolution(s));
     }, []);
 
     useEffect(() => {
-        if (solution != null)
+        if (!uploaded || !id) return;
+
+        getSolution(intId).then(s => setSolution(s));
+    }, [uploaded]);
+
+    useEffect(() => {
+        if (solution !== null)
             getArtifactState(solution.id).then(s => setArtifactState(s));
     }, [solution]);
 
-    if (task == null) return <>Loading</>;
+    if (task === null) return <>Loading</>;
 
     return (
         <div id="assignmentPage">
@@ -118,7 +122,7 @@ export default function TaskPage() {
                         (
                             <form onSubmit={d => {
                                 d.preventDefault();
-                                submitSolution(d.target, intId);
+                                submitSolution(d.target, intId).then(() => setUploaded(true));
                             }}>
                                 <input type="file" name="files" multiple required/>
                                 <input type="submit"/>
