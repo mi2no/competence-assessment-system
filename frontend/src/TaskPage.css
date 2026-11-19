@@ -1,7 +1,9 @@
 #assignmentPage {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
+
+    height: 100%;
 }
 
 #taskPage {
@@ -11,7 +13,28 @@
     align-items: stretch;
 
     font-family: var(--plus-jakarta-sans);
-    height: calc(100dvh - 20px);
+    min-height: 0;
+}
+
+#analysisPage {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+
+    min-height: 0;
+}
+
+#analysisPage .analysisDescription {
+    display: block;
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    text-align: justify;
+    padding: 20px;
 }
 
 #taskPage #dates {

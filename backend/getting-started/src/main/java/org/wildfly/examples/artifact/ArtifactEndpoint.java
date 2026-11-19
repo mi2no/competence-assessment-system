@@ -10,6 +10,7 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.StreamingOutput;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
+import org.wildfly.examples.analysis.Analysis;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -67,6 +68,19 @@ public class ArtifactEndpoint {
         return Response.ok(body, type != null ? type : MediaType.APPLICATION_OCTET_STREAM)
                 .header("Content-Length", data.size())
                 .build();
+    }
+
+    @GET
+    @Path("{id}/analysis")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAnalysis(@PathParam("id") int id) {
+        final Analysis analysis =
+                em.createQuery("SELECT a FROM analysis a JOIN FETCH a.artifact WHERE a.artifact.id = :id", Analysis.class)
+                        .setParameter("id", id).getSingleResultOrNull();
+
+        if (analysis == null) return Response.status(Response.Status.NOT_FOUND).build();
+
+        return Response.ok().entity(analysis).build();
     }
 
 }

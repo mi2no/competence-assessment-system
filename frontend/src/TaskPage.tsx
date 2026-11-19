@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import ArtifactView from "./ArtifactView.tsx";
 
 import './TaskPage.css'
+import AnalysisView from "./AnalysisView.tsx";
 
 export type Task = {
     id : number,
@@ -60,22 +61,12 @@ async function submitSolution(form : HTMLFormElement, taskId : number) {
     console.log(result);
 }
 
-async function getArtifactState(id : number) {
-    const response = await fetch(`/api/artifact/${id}/state`);
-
-    if (!response.ok) return null;
-
-    const state : string = await response.json();
-    return state;
-}
-
 export default function TaskPage() {
     const { id } = useParams<{ id : string }>();
     const intId = id ? parseInt(id) : 0;
     const [task, setTask] = useState<Task | null>(null);
     const [uploaded, setUploaded] = useState<boolean>(false);
     const [solution, setSolution] = useState<Artifact | null>(null);
-    const [artifactState, setArtifactState] = useState<string | null>(null);
 
     useEffect(() => {
         if (!id) return;
@@ -89,11 +80,6 @@ export default function TaskPage() {
 
         getSolution(intId).then(s => setSolution(s));
     }, [uploaded]);
-
-    useEffect(() => {
-        if (solution !== null)
-            getArtifactState(solution.id).then(s => setArtifactState(s));
-    }, [solution]);
 
     if (task === null) return <>Loading</>;
 
@@ -137,16 +123,8 @@ export default function TaskPage() {
                     }
                 </div>
             </section>
-            <section>
-                <div className="sectionName">
-                    <h2>Analysis</h2>
-                    {artifactState !== null && 
-                        <>
-                        &middot;
-                        <span>{artifactState}</span>
-                        </>
-                    }
-                </div>
+            <section id="analysisPage">
+                {solution !== null && <AnalysisView artifactId={solution.id}/>}
             </section>
         </div>
     )

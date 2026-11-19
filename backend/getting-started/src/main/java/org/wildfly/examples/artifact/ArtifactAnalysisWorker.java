@@ -8,11 +8,17 @@ import jakarta.enterprise.context.Initialized;
 import jakarta.enterprise.event.Observes;
 import jakarta.enterprise.event.TransactionPhase;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.hibernate.Hibernate;
+import org.wildfly.examples.analysis.Analysis;
+import org.wildfly.examples.analysis.AnalysisRepository;
 import org.wildfly.examples.competence.CompetenceRepository;
 import org.wildfly.examples.task.Task;
 import org.wildfly.examples.task.TaskEndpoint;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -26,10 +32,19 @@ public class ArtifactAnalysisWorker {
     CompetenceRepository competenceRepo;
 
     @Inject
+    AnalysisRepository analysisRepo;
+
+    @Inject
+    ArtifactDescriber describer;
+
+    @Inject
     ArtifactAnalyzer analyzer;
 
     @Resource
     ManagedExecutorService executor;
+
+    @PersistenceContext(name = "getting-started-PU")
+    EntityManager em;
 
     private final AtomicBoolean running = new AtomicBoolean(false);
     private volatile boolean rerun;
@@ -81,16 +96,23 @@ public class ArtifactAnalysisWorker {
     private void analyze(Artifact item) {
         final Task task = item.getTask();
         final List<ArtifactStorage.FileInfo> files = artifactStorage.getStructure(item.uuid);
-
-        final StringBuilder catalogue = new StringBuilder();
-        for (var c : competenceRepo.getAll()) catalogue.append(c.name).append(":").append(c.description).append('\n');
+        final InvocationParameters params = InvocationParameters.from(Map.of("uuid", item.uuid));
 
         final StringBuilder structure = new StringBuilder();
         for (var file : files) structure.append(file.name()).append('\n');
 
+        final String description = describer.describe(task.getDescription(), structure.toString(), params);
+
+        analysisRepo.create(item, description);
+
+        System.out.println("Description done");
+
+        /*final StringBuilder catalogue = new StringBuilder();
+        for (var c : competenceRepo.getAll()) catalogue.append(c.name).append(":").append(c.description).append('\n');
+
         final String prompt = ArtifactAnalyzer.USER_PROMPT.formatted(catalogue.toString(), task.getDescription(), structure.toString());
 
-        var result = analyzer.analyze(prompt, InvocationParameters.from(Map.of("uuid", item.uuid)));
+        var result = analyzer.analyze(prompt, params);
 
         if (result == null) System.out.println("Result is null");
         else {
@@ -105,6 +127,6 @@ public class ArtifactAnalysisWorker {
                 for (var unmatched : result.unmatchedCompetencies())
                     System.out.println("[" + unmatched.name() + ", " + unmatched.justification() + "]");
             } else System.out.println("null");
-        }
+        }*/
     }
 }
