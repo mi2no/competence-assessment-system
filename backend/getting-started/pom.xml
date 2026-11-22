@@ -297,7 +297,10 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.compiler.plugin}</version>
-                <configuration></configuration>
+                <configuration>
+                    <!-- keep parameter names, so LLM tool schemas show "path" instead of "arg0" -->
+                    <parameters>true</parameters>
+                </configuration>
             </plugin>
 
             <!--Build configuration for the WAR plugin: -->

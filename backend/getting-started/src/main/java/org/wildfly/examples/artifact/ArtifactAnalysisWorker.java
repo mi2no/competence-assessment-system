@@ -14,11 +14,13 @@ import jakarta.transaction.Transactional;
 import org.hibernate.Hibernate;
 import org.wildfly.examples.analysis.Analysis;
 import org.wildfly.examples.analysis.AnalysisRepository;
+import org.wildfly.examples.competence.CompetenceIndexer;
 import org.wildfly.examples.competence.CompetenceRepository;
 import org.wildfly.examples.task.Task;
 import org.wildfly.examples.task.TaskEndpoint;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -39,6 +41,9 @@ public class ArtifactAnalysisWorker {
 
     @Inject
     ArtifactAnalyzer analyzer;
+
+    @Inject
+    CompetenceIndexer indexer;
 
     @Resource
     ManagedExecutorService executor;
@@ -106,6 +111,15 @@ public class ArtifactAnalysisWorker {
         analysisRepo.create(item, description);
 
         System.out.println("Description done");
+
+        final HashSet<CompetenceIndexer.Match> sum = new HashSet<>();
+
+        sum.addAll(indexer.search(description, 20));
+        sum.addAll(indexer.search(task.getDescription(), 20));
+
+        for (var entry : sum) {
+            System.out.printf("[%d : %s]\n", entry.competenceId(), entry.text());
+        }
 
         /*final StringBuilder catalogue = new StringBuilder();
         for (var c : competenceRepo.getAll()) catalogue.append(c.name).append(":").append(c.description).append('\n');

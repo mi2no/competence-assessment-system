@@ -21,6 +21,7 @@ public class ArtifactTools {
     @Tool("Returns the contents of given artifact file")
     public String readFile(@P("The exact path specified in the artifact's structure") String path, InvocationParameters params) {
         final UUID uuid = params.get("uuid");
+        System.out.printf("[readFile] artifact=%s path=%s%n", uuid, path);
 
         try {
             final ArtifactStorage.StoredFileData data = storage.getFile(uuid, path);
