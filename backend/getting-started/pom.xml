@@ -303,6 +303,18 @@
                 </configuration>
             </plugin>
 
+            <!-- Runs DescriberBench without WildFly:
+                 mvn test-compile exec:java -Dexec.args="<samples-dir> <model> [<model> ...]" -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.5.0</version>
+                <configuration>
+                    <mainClass>org.wildfly.examples.artifact.DescriberBench</mainClass>
+                    <classpathScope>test</classpathScope>
+                </configuration>
+            </plugin>
+
             <!--Build configuration for the WAR plugin: -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
