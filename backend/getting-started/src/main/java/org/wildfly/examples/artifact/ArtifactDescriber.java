@@ -32,6 +32,7 @@ public interface ArtifactDescriber {
     Cover: data structures, algorithms, operations, input/output, validation,
     error handling and code organisation. Also state important things the code does NOT do,
     for example missing input validation.
+    Mention which programming languages and libraries have been used.
 
     Rules:
     - Describe the code, not the assignment. If the assignment asks for something

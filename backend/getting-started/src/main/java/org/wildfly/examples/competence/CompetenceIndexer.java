@@ -33,7 +33,7 @@ public class CompetenceIndexer {
 
     /*@Inject
     @ConfigProperty(name = "embedding-model.model-name")*/
-    String modelName = "bge-m3";
+    String modelName = "qwen3-embedding:0.6b";//""bge-m3";
 
     OllamaEmbeddingModel embeddingModel = OllamaEmbeddingModel.builder()
             .baseUrl(baseUrl)
@@ -47,7 +47,7 @@ public class CompetenceIndexer {
     @Resource
     ManagedExecutorService executor;
 
-    private volatile EmbeddingStore<TextSegment> store;
+    volatile EmbeddingStore<TextSegment> store;
 
     void onStartup(@Observes @Initialized(ApplicationScoped.class) Object ignored) {
         executor.submit(this::rebuild);
